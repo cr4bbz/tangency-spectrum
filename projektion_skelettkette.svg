@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Projizierte Skelettkette auf [0,1]</title>
+  <desc id="desc">Tangency skeleton circles projected to points on the interval [0,1], with projectively equal spacing.</desc>
+  <defs>
+    <style>
+      .axis { stroke: #1f2937; stroke-width: 2; }
+      .tick { stroke: #1f2937; stroke-width: 1.5; }
+      .circle { fill: rgba(63, 131, 248, 0.12); stroke: #2563eb; stroke-width: 2; }
+      .circle-alt { fill: rgba(20, 184, 166, 0.12); stroke: #0f766e; stroke-width: 2; }
+      .point { fill: #111827; }
+      .label { font: 15px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #111827; }
+      .small { font: 12px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #4b5563; }
+      .formula { font: 16px "Cambria Math", Georgia, serif; fill: #111827; }
+      .guide { stroke: #9ca3af; stroke-width: 1; stroke-dasharray: 4 5; }
+    </style>
+  </defs>
+
+  <rect width="960" height="420" fill="#fafafa"/>
+  <text x="48" y="42" class="label" font-weight="700">Tangenzprojektion: projektiv gleichmaessige Punkte auf [0,1]</text>
+  <text x="48" y="68" class="formula">eta(p)=log(p/(1-p)),  eta(p_{n+1})-eta(p_n)=log(3+2 sqrt(2))</text>
+
+  <line x1="80" y1="330" x2="880" y2="330" class="axis"/>
+  <line x1="80" y1="322" x2="80" y2="338" class="tick"/>
+  <line x1="480" y1="322" x2="480" y2="338" class="tick"/>
+  <line x1="880" y1="322" x2="880" y2="338" class="tick"/>
+  <text x="75" y="360" class="label">0</text>
+  <text x="466" y="360" class="label">1/2</text>
+  <text x="875" y="360" class="label">1</text>
+
+  <!-- Circles for n = -3..3 using p=(1+tanh(n alpha))/2, visually scaled -->
+  <g>
+    <line x1="97.3" y1="330" x2="97.3" y2="169.7" class="guide"/>
+    <circle cx="97.3" cy="169.7" r="160.3" class="circle-alt"/>
+    <circle cx="97.3" cy="330" r="4" class="point"/>
+    <text x="80" y="386" class="small">p_-3</text>
+  </g>
+  <g>
+    <line x1="130.0" y1="330" x2="130.0" y2="224.7" class="guide"/>
+    <circle cx="130.0" cy="224.7" r="105.3" class="circle-alt"/>
+    <circle cx="130.0" cy="330" r="4" class="point"/>
+    <text x="113" y="386" class="small">p_-2</text>
+  </g>
+  <g>
+    <line x1="213.7" y1="330" x2="213.7" y2="273.3" class="guide"/>
+    <circle cx="213.7" cy="273.3" r="56.7" class="circle-alt"/>
+    <circle cx="213.7" cy="330" r="4" class="point"/>
+    <text x="197" y="386" class="small">p_-1</text>
+  </g>
+  <g>
+    <line x1="480" y1="330" x2="480" y2="130" class="guide"/>
+    <circle cx="480" cy="130" r="200" class="circle"/>
+    <circle cx="480" cy="330" r="4.5" class="point"/>
+    <text x="472" y="386" class="small">p_0</text>
+  </g>
+  <g>
+    <line x1="746.3" y1="330" x2="746.3" y2="273.3" class="guide"/>
+    <circle cx="746.3" cy="273.3" r="56.7" class="circle"/>
+    <circle cx="746.3" cy="330" r="4" class="point"/>
+    <text x="733" y="386" class="small">p_1</text>
+  </g>
+  <g>
+    <line x1="830.0" y1="330" x2="830.0" y2="224.7" class="guide"/>
+    <circle cx="830.0" cy="224.7" r="105.3" class="circle"/>
+    <circle cx="830.0" cy="330" r="4" class="point"/>
+    <text x="817" y="386" class="small">p_2</text>
+  </g>
+  <g>
+    <line x1="862.7" y1="330" x2="862.7" y2="169.7" class="guide"/>
+    <circle cx="862.7" cy="169.7" r="160.3" class="circle"/>
+    <circle cx="862.7" cy="330" r="4" class="point"/>
+    <text x="849" y="386" class="small">p_3</text>
+  </g>
+
+  <text x="48" y="104" class="small">Die euklidischen Abstaende auf der Achse sind nicht konstant; konstant ist die Schrittweite in der Logit-Koordinate.</text>
+  <text x="48" y="126" class="small">Aus p rekonstruiert man den Skelettkreis: Mittelpunkt (2p-1, 2p(1-p)), Radius 2p(1-p).</text>
+</svg>

@@ -1,0 +1,9 @@
+# LaTeX build auxiliaries
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+
+# Local rendering previews
+tmp/

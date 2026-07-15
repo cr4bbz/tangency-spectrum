@@ -1,0 +1,1552 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\geometry{margin=28mm}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\asympnote}{\mathrel{\asymp}}
+\newcommand{\Logit}{\operatorname{logit}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Haus}{\operatorname{dim}_{H}}
+
+\newtheorem{remark}{Bemerkung}[section]
+\newtheorem{question}[remark]{Arbeitsfrage}
+\newtheorem{conjecture}[remark]{Vermutung}
+\newtheorem{proposition}[remark]{Proposition}
+\newtheorem{corollary}[remark]{Korollar}
+
+\title{Von gleichmäßigen Punkten zu projektiver Tangenzdynamik\\
+\large Eine explorative Forschungsnotiz auf der Strecke $[0,1]$}
+\author{}
+\date{15. Juli 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Aus einer elementaren Frage über gleichmäßig angeordnete Punkte auf einer
+Strecke entstehen zwei verschiedene Verfeinerungsgeometrien. Die globale
+Halbierung liefert die additiv gleichmäßige dyadische Zerlegung. Eine
+Tangenzkonfiguration von Kreisen liefert dagegen nach Projektion auf
+$[0,1]$ eine projektiv gleichmäßige Möbius-Bahn. Diese Notiz fasst die
+beiden Modelle, ihre symbolische Stern--Brocot-Dynamik, eine zugeordnete
+Lückenzeta-Funktion und erste multifraktale Fragen zusammen. Sie trennt
+bewusst etablierte Rechnungen von Aussagen, deren vollständiger Beweis noch
+aussteht.
+\end{abstract}
+
+\paragraph{Status.}
+Dies ist ein Forschungsentwurf und kein abgeschlossenes Paper. Aussagen mit
+\emph{bedingt} setzen die in Abschnitt~\ref{sec:dictionary} formulierte
+geometrisch-symbolische Vergleichsannahme voraus. Als \emph{Vermutung}
+bezeichnete Aussagen sind durch die bisherige Exploration motiviert, aber
+noch nicht bewiesen.
+
+\section{Ausgangspunkt: Gleichmäßigkeit auf einer Strecke}
+
+Wir betrachten die abgeschlossene Strecke $[0,1]$. Die Endpunkte $0,1$ sind
+fest; zunächst ist auch der Mittelpunkt gesetzt:
+\[
+  P_0=\left\{0,\frac12,1\right\}.
+\]
+Die naive Frage lautet: Wie lassen sich Punkte hinzufügen, sodass alle
+benachbarten Punkte denselben Abstand haben? Entscheidend ist, welche Metrik
+das Wort ,,derselbe Abstand'' meint.
+
+\subsection{Additive Halbierung}
+
+Die strengste lokale Regel setzt in jedem Zug den Mittelpunkt jeder
+vorhandenen Teilstrecke. Nach $k$ Zügen gilt daher
+\[
+ P_k=\left\{\frac{j}{2^{k+1}}:j=0,\ldots,2^{k+1}\right\},
+ \qquad d_k=2^{-(k+1)}.
+\]
+Damit sind genau die dyadischen Brüche erreichbar. Die in Schritt $k$ neu
+entstehende Generation besteht aus den Punkten mit ungeradem Zähler im
+Nenner $2^{k+1}$. Insbesondere sind die Raster verschachtelt,
+$P_m\subseteq P_n$ für $m\le n$, und $\bigcup_{k\ge0}P_k$ ist abzählbar
+und dicht in $[0,1]$.
+
+Die dyadische Konstruktion verteilt nicht nur Punkte, sondern auch
+Information: Nach $k$ Schritten bestimmt ein Wort der Länge $k+1$ in
+$\{0,1\}$ ein Teilintervall.
+
+\section{Projektive Gleichmäßigkeit aus Tangenz}
+
+Die zweite Verteilung entsteht aus einer symmetrischen Skelettkette von
+Kreisen. Ihre Ausgangsgeometrie ist die abgeschlossene obere Halbebene des
+Einheitskreises
+\[
+ \mathcal U=\{(x,y)\in\mathbb R^2:x^2+y^2\le1,\ y\ge0\}
+\]
+mit Durchmesser $[-1,1]\times\{0\}$. Ein Skelettkreis ist ein Kreis im
+Inneren von $\mathcal U$, der sowohl den Durchmesser als auch den
+Einheitskreis berührt. Sei $(x,0)$ sein Berührpunkt mit dem Durchmesser und
+normiere diesen durch $p=(x+1)/2\in(0,1)$.
+
+\begin{proposition}[Rekonstruktion eines Skelettkreises]
+Der Skelettkreis mit Parameter $p$ besitzt Mittelpunkt und Radius
+\begin{equation}\label{eq:circle-reconstruction}
+ p\longmapsto \bigl((2p-1,2p(1-p)),\,2p(1-p)\bigr),
+ \qquad r(p)=2p(1-p),
+\end{equation}
+wobei der erste Eintrag der Kreismittelpunkt und der zweite der Radius ist.
+\end{proposition}
+
+\begin{proof}
+Da der Kreis den Durchmesser berührt, hat sein Mittelpunkt die Form $(x,r)$.
+Die innere Berührung mit dem Einheitskreis ist äquivalent zu
+\[
+ x^2+r^2=(1-r)^2.
+\]
+Folglich ist $r=(1-x^2)/2$. Mit $x=2p-1$ folgt unmittelbar
+$r=2p(1-p)$ und damit \eqref{eq:circle-reconstruction}.
+\end{proof}
+
+\begin{figure}[htbp]
+ \centering
+ \input{figures/skelettprojektion.tikz}
+ \caption{Die ersten Skelettkreise im Einheitskreis. Ihre Berührpunkte auf
+ dem Durchmesser werden durch $p=(x+1)/2$ auf $[0,1]$ normiert.}
+ \label{fig:skeleton-projection}
+\end{figure}
+
+Setze
+\[
+ \lambda=(1+\sqrt2)^2=3+2\sqrt2.
+\]
+\begin{proposition}[Projektive Tangenzbedingung]
+Für $0<p<q<1$ sind die Skelettkreise zu $p$ und $q$ genau dann äußerlich
+tangential, wenn
+\begin{equation}\label{eq:crossratio}
+ \frac{q(1-p)}{p(1-q)}=\lambda.
+\end{equation}
+Insbesondere erfüllen aufeinanderfolgende projizierte Skelettpunkte
+\begin{equation}\label{eq:mobius}
+ p_{n+1}=T_\lambda(p_n)
+ =\frac{\lambda p_n}{1+(\lambda-1)p_n}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Für Radien $r,s$ und Durchmesserkoordinaten $x,y$ ist äußere Tangenz
+äquivalent zu $(x-y)^2=4rs$. Mit \eqref{eq:circle-reconstruction} wird das
+\[
+ (q-p)^2=4pq(1-p)(1-q).
+\]
+Setze $t=p/(1-p)$ und $u=q/(1-q)$. Nach Kürzen bleibt
+$(u-t)^2=4ut$. Für $u>t$ liefert $z=\sqrt{u/t}>1$ die Gleichung
+$z^2-1=2z$, also $z=1+\sqrt2$ und damit $u/t=\lambda$. Das Umstellen von
+\eqref{eq:crossratio} ergibt \eqref{eq:mobius}.
+\end{proof}
+
+In der Logit-Koordinate
+\[
+ \eta(p)=\Logit(p)=\log\frac{p}{1-p}
+\]
+wird \eqref{eq:mobius} zur Translation
+\[
+ \eta(p_{n+1})-\eta(p_n)=\log\lambda.
+\]
+Somit stehen die Punkte nicht im euklidischen, wohl aber im projektiven Sinn
+in konstantem Abstand.
+
+\begin{remark}
+Die zentrale Gegenüberstellung lautet
+\[
+ \text{globale Halbierung}\quad\longleftrightarrow\quad
+ \text{additive Gleichmäßigkeit},
+\]
+\[
+ \text{Tangenzprojektion}\quad\longleftrightarrow\quad
+ \text{projektive Gleichmäßigkeit}.
+\]
+Sie ist der eigentliche Perspektivwechsel der Ausgangsfrage.
+\end{remark}
+
+\section{Stern--Brocot-Kodierung}\label{sec:dictionary}
+
+Zunächst betrachten wir das arithmetische Referenzmodell. Die
+Randverfeinerung wird durch
+\[
+ L=\begin{pmatrix}1&0\\1&1\end{pmatrix},
+ \qquad
+ R=\begin{pmatrix}1&1\\0&1\end{pmatrix}
+\]
+organisiert. Der Wurzelknoten ist das Intervall $[0/1,1/1]$. Hat ein Knoten
+benachbarte Endpunkte $a/u<c/v$ mit $cu-av=1$, dann setzt die Verfeinerung
+den Medianten $(a+c)/(u+v)$ ein. Die Nennerpaare seiner linken und rechten
+Kindintervalle sind jeweils
+\[
+ (u,v)\longmapsto (u,u+v)=L\binom{u}{v},
+ \qquad
+ (u,v)\longmapsto (u+v,v)=R\binom{u}{v}.
+\]
+
+\begin{proposition}[Exaktes Stern--Brocot-Wörterbuch]
+Die endlichen Wörter $w\in\{L,R\}^*$ stehen bijektiv zu den positiven
+teilerfremden Paaren $(u_w,v_w)$. Das zugehörige Referenzintervall $J_w$
+hat die exakte Länge
+\begin{equation}\label{eq:reference-length}
+ |J_w|=\frac{1}{u_wv_w}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Die Subtraktionsversion des euklidischen Algorithmus reduziert jedes
+positive teilerfremde Paar eindeutig auf $(1,1)$; rückwärts entstehen genau
+die beiden angegebenen Operationen $L,R$. Für benachbarte Endpunkte gilt
+\[
+ \frac{c}{v}-\frac{a}{u}=\frac{cu-av}{uv}=\frac1{uv},
+\]
+was \eqref{eq:reference-length} beweist.
+\end{proof}
+
+Ein unendliches Wort beschreibt einen Grenzpunkt. Wie beim binären
+Stellenwertsystem sind die endlich erzeugten Randpunkte die Ausnahme mit
+zwei symbolischen Adressen. Für die geometrische Lücke der Tangenzfigur
+bleibt folgende Brücke zu beweisen:
+
+\begin{quote}
+\textbf{Vergleichsannahme.} Zu jedem Wort $w$ gehört eine geometrische
+Lücke $I_w$ mit Länge $\ell_w$. Unter der Stern--Brocot-Bijektion
+$w\leftrightarrow(u_w,v_w)$ zu positiven teilerfremden Paaren existieren
+Konstanten $0<c\le C<\infty$, unabhängig von $w$, so dass
+\begin{equation}\label{eq:comparison}
+ \frac{c}{u_wv_w}\le \ell_w\le\frac{C}{u_wv_w}.
+\end{equation}
+\end{quote}
+
+Die besondere Wiederholung der ersten Lücke wird durch das Wort $LR^2L$
+ausgedrückt. Sein Matrixprodukt besitzt den dominanten Eigenwert
+$3+2\sqrt2$; daher tritt dieselbe Zahl sowohl in der Skelettbahn als auch
+in einer Pell-artigen Rekursion
+\[
+ u_{k+1}=6u_k-u_{k-1}
+\]
+auf. Hier muss noch präzisiert werden, welche konkrete Folge $u_k$ gemeint
+ist und wie sie aus der Geometrie normiert wird.
+
+\section{Konkrete Randlücken der Halbkreisgeometrie}
+
+Wir wenden das Wörterbuch nun auf eine geometrisch bestimmte Teilfamilie der
+Packung an. Für $n\ge0$ sei $G_n$ die Lücke, die von der Halbierungsgeraden,
+$C_n$ und $C_{n+1}$ begrenzt wird. Wir verfolgen nur diejenigen rekursiv
+entstehenden Teillücken, die weiterhin an der Halbierungsgeraden liegen.
+Sie bilden den \emph{Randbaum} von $G_n$. Die obere, nicht an der Geraden
+liegende Teilpackung wird hier bewusst nicht mitgezählt.
+
+Seien $A,B$ zwei benachbarte Kreise des Randbaums mit Radien $a^{-2}$ und
+$b^{-2}$. Ihre Berührpunkte mit der Halbierungsgeraden begrenzen ein Intervall
+der Länge
+\begin{equation}\label{eq:gap-length-exact}
+ \ell(A,B)=\frac{2}{ab}.
+\end{equation}
+Der neue Kreis, der an $A$, $B$ und die Halbierungsgerade tangential ist,
+hat Radius $(a+b)^{-2}$.
+
+\begin{proposition}[Exakte geometrische Randrekursion]
+Die beiden Kindlücken eines Randintervalls mit Parameterpaar $(a,b)$ besitzen
+die Parameterpaare
+\[
+ (a,a+b)=L\binom{a}{b},
+ \qquad
+ (a+b,b)=R\binom{a}{b}.
+\]
+Insbesondere gilt \eqref{eq:gap-length-exact} auf jedem Knoten des
+Randbaums exakt.
+\end{proposition}
+
+\begin{proof}
+Zwei an dieselbe Gerade tangentiale Kreise mit Radien $a^{-2}$ und $b^{-2}$
+sind genau dann äußerlich tangential, wenn der Abstand ihrer Berührpunkte auf
+der Geraden $2/(ab)$ beträgt. Für einen Kreis mit Radius $(a+b)^{-2}$ sind
+die beiden Teilabstände
+\[
+ \frac{2}{a(a+b)}
+ \quad\text{und}\quad
+ \frac{2}{b(a+b)}.
+\]
+Ihre Summe ist $2/(ab)$; der neue Kreis passt also exakt zwischen die beiden
+alten. Seine beiden Nachbarpaare sind folglich $(a,a+b)$ und $(a+b,b)$.
+\end{proof}
+
+Für die Skelettkette aus dem Paper gilt mit $q=1+\sqrt2$ und
+$\alpha=\log q$
+\[
+ r_n=\frac{1}{2\cosh^2(n\alpha)},
+ \qquad
+ a_n=r_n^{-1/2},\qquad b_n=r_{n+1}^{-1/2}.
+\]
+Der Quotient der Wurzelparameter erfüllt gleichmäßig in $n$
+\begin{equation}\label{eq:root-ratio}
+ \sqrt2\le \frac{b_n}{a_n}
+ =\frac{\cosh((n+1)\alpha)}{\cosh(n\alpha)}<q.
+\end{equation}
+
+Sei $(u_w,v_w)=M_w(1,1)$ das Stern--Brocot-Paar des Wortes $w$. Bezeichne
+$\ell_{n,w}$ die Länge der geometrischen Randlücke in $G_n$ mit Adresse $w$.
+
+\begin{proposition}[Uniformer Vergleich aus der Geometrie]
+Für alle $n\ge0$ und $w\in\{L,R\}^*$ gilt
+\begin{equation}\label{eq:geometric-comparison}
+ \frac{2r_n}{q^2u_wv_w}
+ \le \ell_{n,w}\le
+ \frac{2r_n}{u_wv_w}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Schreibe $M_w=\left(\begin{smallmatrix}A&B\\C&D\end{smallmatrix}\right)$
+mit nichtnegativen Einträgen. Der Parameter des Knotens ist
+\[
+ M_w\binom{a_n}{b_n}
+ =a_n\binom{A+B(b_n/a_n)}{C+D(b_n/a_n)}.
+\]
+Nach \eqref{eq:root-ratio} liegt jede der beiden Komponenten zwischen der
+entsprechenden Komponente von $M_w(1,1)$ und deren $q$-Fachem. Die exakte
+Längenformel \eqref{eq:gap-length-exact} und $a_n^{-2}=r_n$ ergeben
+\eqref{eq:geometric-comparison}.
+\end{proof}
+
+\section{Zeta-Funktion und Zählung der konkreten Randlücken}
+
+Wir zählen zunächst nur die rechte Randfamilie. Ihre Zeta-Funktion ist
+\[
+ Z_\partial^+(s)=
+ \sum_{n\ge0}\sum_{w\in\{L,R\}^*}\ell_{n,w}^s.
+\]
+Die gespiegelte linke Familie liefert lediglich den Faktor $2$ und hat
+denselben kritischen Exponenten. Das arithmetische Referenzmodell ist
+\[
+ Z_{\mathrm{ref}}(s)
+ =\sum_{\substack{u,v\ge1\\\gcd(u,v)=1}}\frac{1}{(uv)^s}
+ =\frac{\zeta(s)^2}{\zeta(2s)},\qquad s>1.
+\]
+Die letzte Gleichheit folgt aus der Möbius-Inversion oder aus der
+Eulerproduktzerlegung. Es besitzt bei $s=1$ einen Doppelpol:
+\[
+ Z_{\mathrm{ref}}(s)\sim\frac{6}{\pi^2}(s-1)^{-2}.
+\]
+Der Faktor $2^s$ aus einer alternativen Konvention für orientierte oder
+beidseitige Lücken würde den Koeffizienten bei $s=1$ zu $12/\pi^2$
+ändern. Diese Konvention muss vor einer endgültigen Aussage fixiert
+werden.
+
+\begin{proposition}[Kritischer Exponent der konkreten Randfamilie]
+Die Reihe $Z_\partial^+(s)$ konvergiert genau für $s>1$. Insbesondere ist
+der kritische Exponent der Randfamilie
+\[
+ s_c=1.
+\]
+\end{proposition}
+
+\begin{proof}
+Aus \eqref{eq:geometric-comparison} folgt für $s>0$
+\[
+ \frac{2^s}{q^{2s}}\Bigl(\sum_{n\ge0}r_n^s\Bigr)Z_{\mathrm{ref}}(s)
+ \le Z_\partial^+(s)\le
+ 2^s\Bigl(\sum_{n\ge0}r_n^s\Bigr)Z_{\mathrm{ref}}(s).
+\]
+Wegen $r_n\asymp q^{-2n}$ konvergiert die erste Summe für jedes $s>0$.
+Die Behauptung folgt daher aus der Eulerproduktformel für
+$Z_{\mathrm{ref}}$.
+\end{proof}
+
+Für die Zählung setzen wir
+\[
+ N_\partial^+(\varepsilon)=
+ \#\{(n,w):\ell_{n,w}\ge\varepsilon\}.
+\]
+
+\begin{proposition}[Lückenzählung der konkreten Randfamilie]
+Für $\varepsilon\downarrow0$ gilt
+\[
+ N_\partial^+(\varepsilon)=\Theta\!\left(
+ \varepsilon^{-1}\log\frac1\varepsilon\right),
+\]
+und dieselbe Ordnung gilt nach Hinzunahme der gespiegelten linken Familie.
+\end{proposition}
+
+\begin{proof}
+Sei
+\[
+ F(X)=\#\{(u,v)\in\N^2:\gcd(u,v)=1,\ uv\le X\}.
+\]
+Möbius-Inversion in der klassischen Divisorsumme liefert
+$F(X)=\Theta(X\log(2+X))$. Aus \eqref{eq:geometric-comparison} folgt
+\[
+ \sum_{n\ge0}F\!\left(\frac{2r_n}{q^2\varepsilon}\right)
+ \le N_\partial^+(\varepsilon)\le
+ \sum_{n\ge0}F\!\left(\frac{2r_n}{\varepsilon}\right).
+\]
+Die untere Schranke folgt bereits aus dem Summanden $n=0$. Für die obere
+Schranke tragen nur $n$ mit $2r_n\ge\varepsilon$ bei. Mit der exponentiellen
+Abnahme von $r_n$ und $\sum_n r_n<\infty$ ist die rechte Seite
+$O(\varepsilon^{-1}\log(1/\varepsilon))$.
+\end{proof}
+
+\begin{remark}
+Damit sind Exponent und Zählordnung für eine kanonische, geometrisch
+definierte Teilfamilie der vollen Halbkreispackung bewiesen.
+\end{remark}
+
+\section{Die Randfamilie am Außenkreis}
+
+Die zweite Randfamilie besitzt dieselbe Struktur. Sichtbar wird sie nach
+einer Möbius-Transformation. Identifiziere die Ebene mit $\mathbb C$ und
+betrachte die Cayley-Transformation
+\[
+ \Phi(z)=i\frac{1+z}{1-z},
+ \qquad
+ \Phi^{-1}(t)=\frac{t-i}{t+i}.
+\]
+Sie bildet den Einheitskreis ohne den Punkt $1$ auf die reelle Gerade ab.
+Sei $\xi_n$ der Berührpunkt von $C_n$ mit dem Einheitskreis. Aus den
+geschlossenen Skelettformeln folgt
+\begin{equation}\label{eq:cayley-skeleton}
+ \Phi(\xi_n)=-q^{2n},
+ \qquad
+ \operatorname{rad}(\Phi(C_n))=q^{2n}.
+\end{equation}
+Tatsächlich ist $\xi_n=(x_n+ir_n)/(1-r_n)$, und die Standardformel für den
+Bildradius eines Kreises unter $\Phi$ liefert
+\[
+ \operatorname{rad}(\Phi(C_n))
+ =\frac{2r_n}{|1-(x_n+ir_n)|^2-r_n^2}
+ =\frac{2r_n}{(1-x_n)^2}=q^{2n}.
+\]
+
+Damit werden die Kreise, die in einer oberen Lücke gleichzeitig den
+Außenkreis berühren, zu Kreisen über der reellen Achse. Die Randparameter
+des Wurzelintervalls zwischen $C_n$ und $C_{n+1}$ sind im Bild
+\[
+ \widetilde a_n=q^{-n},
+ \qquad
+ \widetilde b_n=q^{-(n+1)}.
+\]
+Die exakte Rekursion aus Proposition~4.1 gilt dort unverändert.
+
+Sei $\widetilde\ell_{n,w}$ die Länge des Bildintervalls auf der reellen
+Achse und $\ell^{\circ}_{n,w}$ die Bogenlänge seines Urbilds auf dem
+Einheitskreis. Dann gilt für jedes Wort $w$
+\begin{equation}\label{eq:cayley-real-comparison}
+ \frac{2q^{2n}}{u_wv_w}
+ \le \widetilde\ell_{n,w}\le
+ \frac{2q^{2n+2}}{u_wv_w}.
+\end{equation}
+Denn für $M_w=\left(\begin{smallmatrix}A&B\\C&D\end{smallmatrix}\right)$
+liegen $A+B/q$ und $C+D/q$ jeweils zwischen der entsprechenden
+Komponente von $M_w(1,1)$ dividiert durch $q$ und dieser Komponente selbst.
+Die exakte Geradenformel \eqref{eq:gap-length-exact} liefert dann
+\eqref{eq:cayley-real-comparison}.
+Auf dem ganzen Wurzelintervall liegen die reellen Koordinaten zwischen
+$-q^{2n+2}$ und $-q^{2n}$. Da
+\[
+ \left|\frac{d}{dt}\Phi^{-1}(t)\right|=\frac{2}{1+t^2},
+\]
+folgt
+\begin{equation}\label{eq:outer-arc-comparison}
+ \frac{4q^{2n}}{(1+q^{4n+4})u_wv_w}
+ \le \ell^{\circ}_{n,w}\le
+ \frac{4q^{2n+2}}{(1+q^{4n})u_wv_w}.
+\end{equation}
+
+\begin{proposition}[Außenkreisfamilie]
+Für die rechte Außenkreisfamilie definieren wir mit ihren Bogenlängen
+\[
+ Z_\circ^+(s)=\sum_{n\ge0}\sum_{w\in\{L,R\}^*}
+ (\ell^{\circ}_{n,w})^s
+\]
+gilt erneut $s_c=1$. Ferner ist
+\[
+ N_\circ^+(\varepsilon)=
+ \Theta\!\left(\varepsilon^{-1}\log\frac1\varepsilon\right).
+\]
+\end{proposition}
+
+\begin{proof}
+Aus \eqref{eq:outer-arc-comparison} folgt mit Konstanten, die nur von $q$
+abhängen,
+\[
+ \ell^{\circ}_{n,w}\asymp\frac{q^{-2n}}{u_wv_w}.
+\]
+Die Argumente aus Propositionen~5.1 und~5.2 gelten daher mit der
+geometrischen Reihe $\sum_n q^{-2ns}$ unverändert.
+\end{proof}
+
+\begin{remark}
+Beide Randfamilien der Halbkreispackung besitzen damit dieselbe kritische
+Skalierung. Offen bleibt jetzt nur noch die Zeta-Analyse der nicht an einen
+Rand gebundenen, zweidimensionalen Apollonischen Teilpackungen.
+\end{remark}
+
+\section{Die erste Binnenebene}
+
+Die Randbäume erzeugen bereits eine kanonische Teilfamilie von Kreisen, die
+nicht mehr an einem Rand liegen. Sei $G_{n,w}$ eine untere Randlücke mit
+Parameterpaar $(a,b)$. Nach dem Einsetzen des geradentangentialen Kreises mit
+Krümmung $(a+b)^2$ entsteht eine Dreieckslücke. Ihr erster Binnenkreis ist
+der zweite Descartes-Kreis zu dieser Konfiguration. Seine Krümmung ist
+\[
+ \kappa(a,b)=2\bigl(a^2+b^2+(a+b)^2\bigr)
+ =4(a^2+ab+b^2),
+\]
+also sein Radius
+\begin{equation}\label{eq:seed-radius-exact}
+ \rho(a,b)=\frac{1}{4(a^2+ab+b^2)}.
+\end{equation}
+Wir nennen die so entstehenden Kreise $E_{n,w}$ die \emph{erste
+Binnenebene}.
+
+\begin{proposition}[Uniformer Vergleich der ersten Binnenebene]
+Sei $(u_w,v_w)=M_w(1,1)$ und sei $\rho_{n,w}$ der Radius von $E_{n,w}$.
+Dann gilt für alle $n\ge0$ und $w\in\{L,R\}^*$
+\begin{equation}\label{eq:seed-comparison}
+ \frac{r_n}{4q^2(u_w+v_w)^2}
+ \le \rho_{n,w}\le
+ \frac{r_n}{3(u_w+v_w)^2}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Schreibe $(a,b)=M_w(a_n,b_n)$ und $\theta=b_n/a_n$. Aus
+\eqref{eq:root-ratio} folgt
+\[
+ a_nu_w\le a\le q a_nu_w,
+ \qquad
+ a_nv_w\le b\le q a_nv_w.
+\]
+Weiter gilt
+\[
+ \frac34(u_w+v_w)^2\le u_w^2+u_wv_w+v_w^2
+ \le (u_w+v_w)^2.
+\]
+Setzt man diese Abschätzungen in \eqref{eq:seed-radius-exact} ein und
+verwendet $a_n^{-2}=r_n$, so erhält man \eqref{eq:seed-comparison}.
+\end{proof}
+
+Die dazugehörige Referenzzeta ist nicht mehr die Produktreihe aus dem
+Randbaum, sondern
+\[
+ Z_{\mathrm{seed,ref}}(s)
+ =\sum_{\substack{u,v\ge1\\\gcd(u,v)=1}}\frac{1}{(u+v)^{2s}}
+ =\sum_{m\ge2}\frac{\varphi(m)}{m^{2s}}
+ =\frac{\zeta(2s-1)}{\zeta(2s)}
+ \qquad(s>1).
+\]
+Sie hat bei $s=1$ einen einfachen Pol. Die andere Arithmetik zeigt sich
+auch in der Zählung.
+
+\begin{proposition}[Zeta und Zählung der ersten Binnenebene]
+Für
+\[
+ Z_{\mathrm{seed}}^+(s)=
+ \sum_{n\ge0}\sum_{w\in\{L,R\}^*}\rho_{n,w}^s
+\]
+gilt der kritische Exponent $s_c=1$ und, für $s\downarrow1$,
+\[
+ Z_{\mathrm{seed}}^+(s)=\Theta\!\left(\frac{1}{s-1}\right).
+\]
+Ferner erfüllt die Radiuszählfunktion
+\[
+ N_{\mathrm{seed}}^+(\varepsilon)=
+ \#\{(n,w):\rho_{n,w}\ge\varepsilon\}
+\]
+die Ordnung
+\[
+ N_{\mathrm{seed}}^+(\varepsilon)=\Theta(\varepsilon^{-1})
+ \qquad(\varepsilon\downarrow0).
+\]
+\end{proposition}
+
+\begin{proof}
+Die Zeta-Aussage folgt aus \eqref{eq:seed-comparison}, der Konvergenz von
+$\sum_n r_n^s$ für $s>0$ und der angegebenen Dirichlet-Reihe für
+$Z_{\mathrm{seed,ref}}$. Für die Zählung setze
+\[
+ H(X)=\#\{(u,v)\in\N^2:\gcd(u,v)=1,\ u+v\le X\}.
+\]
+Wegen $H(X)=\sum_{m\le X}\varphi(m)=\Theta(X^2)$ liefert
+\eqref{eq:seed-comparison} nach Summation über $n$ die obere Schranke
+$O(\varepsilon^{-1}\sum_n r_n)=O(\varepsilon^{-1})$. Die untere Schranke
+folgt bereits aus $n=0$ und $H(c\varepsilon^{-1/2})=\Theta(\varepsilon^{-1})$.
+\end{proof}
+
+\begin{remark}
+Die erste Binnenebene hat also noch denselben kritischen Exponenten wie die
+Randfamilie, aber keinen logarithmischen Zählfaktor. Dieser Unterschied
+trennt die Produktarithmetik $uv$ der Randlücken von der Summenarithmetik
+$(u+v)^2$ der ersten freien Descartes-Kreise. Eine Aussage über alle tieferen
+Binnenkreise ist damit ausdrücklich noch nicht getroffen.
+\end{remark}
+
+\section{Zählung der vollständigen Packung}
+
+Die vollständige Halbkreispackung ist keine einzelne Apollonische Bahn. Sie
+ist die disjunkte Vereinigung der Kreise, die in den offenen Lücken zwischen
+aufeinanderfolgenden Skelettkreisen entstehen. Setze
+\[
+ \mathcal S^+=\{C_n:n\ge0\},
+ \qquad
+ \mathcal S^-=\{C_{-n}:n\ge1\}.
+\]
+Damit gehört der mittlere Skelettkreis $C_0$ nur zu $\mathcal S^+$.
+Sei
+$\mathcal A_n^{\mathrm{G}}$ beziehungsweise
+$\mathcal A_n^{\mathrm{K}}$ die Menge der neu geborenen Kreise in der
+Geraden- beziehungsweise Außenkreislücke zwischen $C_n$ und $C_{n+1}$.
+Die Randkreise der Lücke selbst gehören nicht zu $\mathcal A_n^{\bullet}$.
+
+\begin{proposition}[Kanonische Zählkonvention]
+Mit $\widetilde{\mathcal A}_n^{\bullet}$ als linker Spiegelung von
+$\mathcal A_n^{\bullet}$ ist die Menge aller Kreise der Packung die
+disjunkte Vereinigung
+\[
+ \mathcal P=\mathcal S^+\,\dot\cup\,\mathcal S^-
+ \,\dot\cup\!
+ \bigsqcup_{n\ge0}\bigl(
+ \mathcal A_n^{\mathrm{G}}\dot\cup\mathcal A_n^{\mathrm{K}}\bigr)
+ \,\dot\cup\!
+ \bigsqcup_{n\ge0}\bigl(
+ \widetilde{\mathcal A}_n^{\mathrm{G}}
+ \dot\cup\widetilde{\mathcal A}_n^{\mathrm{K}}\bigr).
+\]
+Insbesondere zählt die Radiuszeta
+\[
+ Z_{\mathcal P}(s)=\sum_{C\in\mathcal P}\operatorname{rad}(C)^s
+\]
+jeden Kreis genau einmal.
+\end{proposition}
+
+\begin{proof}
+Die beiden Skelettfamilien sind wegen der getrennten Behandlung von $C_0$
+disjunkt. Die offenen Geraden- und Außenkreislücken haben paarweise
+disjunkte Innere; zwei benachbarte Lücken teilen höchstens Skelettkreise,
+die aus den Mengen $\mathcal A_n^{\bullet}$ ausgeschlossen sind. Innerhalb
+einer festen Lücke ist jeder neue Kreis der eindeutige Descartes-Kreis einer
+eindeutigen Elternlücke. Damit besitzt er eine eindeutige Geburtsadresse.
+\end{proof}
+
+\begin{figure}[htbp]
+ \centering
+ \input{figures/packungszerlegung.tikz}
+ \caption{Lokale Zerlegung zwischen zwei aufeinanderfolgenden
+ Skelettkreisen. Die Geraden- und die Außenlücke tragen jeweils eine
+ eigene Apollonische Teilpackung; die Skelettkreise selbst werden nur in
+ $\mathcal S$ gezählt.}
+ \label{fig:packing-decomposition}
+\end{figure}
+
+Für eine einzelne normalisierte Apollonische Dreieckspackung ist die
+Situation bekannt. Ihre Radiuszählung hat den Exponenten
+\[
+ \delta=1.305686728\ldots,
+\]
+die Hausdorff-Dimension des klassischen Apollonischen Gaskets. Genauer gilt
+für eine solche lokale Packung $\mathcal A_\theta$, deren Formparameter
+$\theta$ in einem kompakten positiven Intervall liegt,
+\[
+ N_\theta(\varepsilon)
+ \sim c(\theta)\varepsilon^{-\delta},
+ \qquad
+ \lim_{s\downarrow\delta}(s-\delta)Z_\theta(s)
+ =\delta c(\theta).
+\]
+Die Zählaussage ist der Kreis-Zählsatz von
+\href{https://arxiv.org/abs/0811.2236}{Kontorovich--Oh}; die präzise
+Dimension wurde jüngst von
+\href{https://arxiv.org/abs/2406.04922}{Vytnova--Wormell} rigoros
+berechnet.
+
+In unserer unteren Familie ist die Normalisierung besonders transparent:
+Nach Skalierung mit $r_n^{-1}$ besitzt die Wurzellücke den Parameter
+\[
+ \theta_n=\frac{b_n}{a_n}\in[\sqrt2,q].
+\]
+
+\begin{proposition}[Uniforme Möbius-Normierung]
+Sei $\mathcal G_\theta$ die untere Apollonische Packung, deren beiden
+Randkreise Radien $1$ und $\theta^{-2}$ besitzen. Für
+$\theta\in[\sqrt2,q]$ bildet
+\[
+ M_\theta(z)=\frac{z}{1+\frac{\theta-2}{2}z}
+\]
+die Packung $\mathcal G_2$ auf $\mathcal G_\theta$ ab. Es gibt Konstanten
+$0<m\le M<\infty$, unabhängig von $\theta$ und vom Kreis $C\in\mathcal G_2$,
+so dass
+\[
+ m\operatorname{rad}(C)
+ \le\operatorname{rad}(M_\theta(C))
+ \le M\operatorname{rad}(C).
+\]
+\end{proposition}
+
+\begin{proof}
+Die Berührpunkte der beiden Randkreise von $\mathcal G_2$ sind $0$ und $1$.
+Es gilt
+\[
+ M_\theta(0)=0,
+ \qquad M_\theta(1)=\frac2\theta,
+ \qquad M_\theta'(0)=1,
+ \qquad M_\theta'(1)=\frac4{\theta^2}.
+\]
+Damit werden die beiden Horokreise mit Radien $1$ und $1/4$ exakt auf die
+Horokreise mit Radien $1$ und $\theta^{-2}$ abgebildet; die gesamte
+Descartes-Rekursion wird mitgenommen. Die Pole der Familie $M_\theta$ liegen
+gleichmäßig außerhalb einer festen kompakten Umgebung aller
+$\overline{\mathcal G_2}$. Auf dieser Umgebung sind $M_\theta$ und ihre
+Inversen daher gleichmäßig Lipschitz. Der Vergleich der Kreisradien folgt
+aus dem Vergleich der Durchmesser.
+\end{proof}
+
+\begin{figure}[htbp]
+ \centering
+ \input{figures/moebiusnormierung.tikz}
+ \caption{Schematische uniforme Normierung der unteren Wurzellücken.
+ Die rationale Abbildung $M_\theta$ nimmt die Referenzpackung
+ $\mathcal G_2$ exakt auf $\mathcal G_\theta$ mit und kontrolliert die
+ Kreisradien auf dem kompakten Parameterintervall einheitlich.}
+ \label{fig:moebius-normalization}
+\end{figure}
+
+Als direkte Folge gelten für die lokale Zeta und Zählung gleichmäßige
+Vergleiche mit der festen Packung $\mathcal G_2$. Insbesondere ist der
+kritische Exponent jeder Wurzellücke $\delta$, und die Konstanten in den
+groben Abschätzungen $N_\theta(\varepsilon)\asymp
+\varepsilon^{-\delta}$ können auf $[\sqrt2,q]$ einheitlich gewählt werden.
+
+Für die Außenkreisfamilie führt die Cayley-Transformation auf eine feste
+normalisierte Horokreispackung mit Parameter $q$. Nach der Skalierung
+$t=-q^{2n}u$ ist ihre Rückabbildung
+\[
+ F_n(u)=\Phi^{-1}(-q^{2n}u)
+\]
+auf dem festen kompakten Wurzeldreieck gleichmäßig bi-Lipschitz bis auf den
+Faktor $q^{-2n}$, denn
+\[
+ |F_n'(u)|=\frac{2q^{2n}}{|q^{2n}u-i|^2}\asymp q^{-2n}.
+\]
+Auch dort sind die lokalen Radiuszählungen also gleichmäßig mit einer festen
+Apollonischen Packung vergleichbar.
+
+\begin{proposition}[Globaler Exponent und globale Zählordnung]
+Die Radiuszeta der vollständigen Halbkreispackung besitzt den kritischen
+Exponenten
+\[
+ s_c(\mathcal P)=\delta.
+\]
+Ferner gilt
+\[
+ N_{\mathcal P}(\varepsilon)=\Theta(\varepsilon^{-\delta})
+ \qquad(\varepsilon\downarrow0).
+\]
+\end{proposition}
+
+\begin{proof}
+Die $n$-te untere Lücke ist nach Skalierung mit $r_n^{-1}$ die Packung zum
+Parameter $\theta_n$. Die uniforme Normierung liefert deshalb für $s>\delta$
+\[
+ \sum_{n\ge0}\sum_{C\in\mathcal A_n^{\mathrm G}}
+ \operatorname{rad}(C)^s
+ \ll_s\sum_{n\ge0}r_n^s<\infty.
+\]
+Die einzelne Lücke $n=0$ erzwingt die Divergenz für $s\le\delta$.
+Entsprechend folgt für die Zählung die obere Schranke aus
+\[
+ \sum_{n\ge0}N_{\theta_n}(\varepsilon/r_n)
+ \ll \varepsilon^{-\delta}\sum_{n\ge0}r_n^\delta,
+\]
+während $n=0$ die untere Schranke liefert. Die Cayley-Normierung der
+Außenkreisfamilie besitzt auf jedem Wurzelintervall denselben gleichmäßigen
+Kreisvergleich; die Spiegelung fügt nur weitere gleichartige Familien hinzu.
+\end{proof}
+
+\begin{remark}
+Damit sind kritischer Exponent und Zählordnung nun für die gesamte
+Halbkreispackung bestimmt. Die Zählhauptkonstante wird im folgenden
+Unterabschnitt ohne effektiven Restterm bestimmt. Offen bleibt danach nur
+noch die meromorphe Zeta-Fortsetzung mit kontrolliertem Fehler.
+\end{remark}
+
+\subsection{Reduktion der globalen Hauptkonstante}
+
+Die Wurzelparameter der unteren Lücken besitzen eine besonders einfache
+Grenzstruktur. Aus den Formeln für $\cosh$ folgt
+\begin{equation}\label{eq:root-parameter-exact}
+ r_n=\frac{2q^{-2n}}{(1+q^{-2n})^2},
+ \qquad
+ \theta_n
+ =q\frac{1+q^{-2n-2}}{1+q^{-2n}}.
+\end{equation}
+Insbesondere konvergiert $\theta_n$ exponentiell gegen $q$. Sei
+$\mathcal A_{n,\sigma}^{\sharp}$, $\sigma\in\{\mathrm G,\mathrm K\}$,
+die nach einer Translation und Skalierung mit $r_n^{-1}$ normierte lokale
+Packung in der $n$-ten rechten Lücke. Schreibe
+$c_{n,\sigma}$ für ihre lokale Zählkonstante. Für die Geradenlücke ist
+$c_{n,\mathrm G}=c_{\mathrm G}(\theta_n)$.
+
+Die uniforme Normierung liefert die für die Summation nötige
+Beschränktheit direkt. Für die untere Familie gilt wegen
+Proposition~8.2 mit Konstanten $m,M>0$
+\[
+ N_{\mathcal G_2}(\varepsilon/m)
+ \le N_{\mathcal G_\theta}(\varepsilon)
+ \le N_{\mathcal G_2}(\varepsilon/M).
+\]
+Nach Multiplikation mit $\varepsilon^\delta$ und Grenzübergang folgt
+\[
+ c_{\mathrm G}(2)m^\delta
+ \le c_{\mathrm G}(\theta)
+ \le c_{\mathrm G}(2)M^\delta.
+\]
+Der Cayley-Vergleich liefert dieselbe Beschränktheit für die Außenfamilie.
+Die analytische Abhängigkeit der Apollonischen Hauptkonstante von den
+Anfangskreisen ist darüber hinaus in
+\href{https://arxiv.org/abs/1702.02854}{Kesseböhmer--Kombrink}
+beschrieben. Damit ist
+\begin{equation}\label{eq:global-leading-constant}
+ C_{\mathrm{glob}}
+ =2\sum_{n\ge0}r_n^\delta
+   \bigl(c_{n,\mathrm G}+c_{n,\mathrm K}\bigr)
+\end{equation}
+wohldefiniert und positiv. Der Faktor $2$ berücksichtigt die linke
+Spiegelung. Formel \eqref{eq:root-parameter-exact} macht die untere
+Teilreihe sogar rasch numerisch auswertbar:
+\[
+ \sum_{n\ge0}r_n^\delta c_{\mathrm G}(\theta_n)
+ =c_{\mathrm G}(q)\sum_{n\ge0}r_n^\delta
+  +\sum_{n\ge0}r_n^\delta
+   \bigl(c_{\mathrm G}(\theta_n)-c_{\mathrm G}(q)\bigr).
+\]
+
+\begin{proposition}[Unbedingte globale Hauptasymptotik]
+Für die vollständige Halbkreispackung gilt
+\begin{equation}\label{eq:global-main-asymptotic}
+ N_{\mathcal P}(\varepsilon)
+ \sim C_{\mathrm{glob}}\varepsilon^{-\delta}
+ \qquad(\varepsilon\downarrow0).
+\end{equation}
+Insbesondere besitzt die Zeta-Funktion die Abel-Grenze
+\[
+ \lim_{s\downarrow\delta}
+ (s-\delta)Z_{\mathcal P}(s)=\delta C_{\mathrm{glob}}.
+\]
+\end{proposition}
+
+\begin{proof}
+Die uniformen Möbius- und Cayley-Normierungen liefern eine Konstante
+$B>0$, so dass für alle $n$, alle $\sigma\in\{\mathrm G,\mathrm K\}$ und
+alle $\varepsilon>0$
+\[
+ N_{\mathcal A_{n,\sigma}}(\varepsilon)
+ \le B\left(\frac{r_n}{\varepsilon}\right)^\delta.
+\]
+Für ein festes $N$ liefert der lokale Kreiszählsatz nach Multiplikation mit
+$\varepsilon^\delta$
+\[
+\lim_{\varepsilon\downarrow0}
+\varepsilon^\delta
+ 2\sum_{n=0}^{N}\sum_{\sigma\in\{\mathrm G,\mathrm K\}}
+ N_{\mathcal A_{n,\sigma}}(\varepsilon)
+ =2\sum_{n=0}^{N}r_n^\delta
+  \bigl(c_{n,\mathrm G}+c_{n,\mathrm K}\bigr).
+\]
+Andererseits ist der Rest gleichmäßig kontrolliert:
+\[
+ 0\le 2\varepsilon^\delta
+ \sum_{n>N}\sum_{\sigma\in\{\mathrm G,\mathrm K\}}
+ N_{\mathcal A_{n,\sigma}}(\varepsilon)
+ \le4B\sum_{n>N}r_n^\delta.
+\]
+Die rechte Seite verschwindet für $N\to\infty$. Dasselbe gilt für den Rest
+der Reihe \eqref{eq:global-leading-constant}; die Skelettkette ist nach
+Multiplikation mit $\varepsilon^\delta$ vernachlässigbar. Dies beweist
+\eqref{eq:global-main-asymptotic}. Die Abel-Grenze folgt aus der
+Mellin-Identität für $Z_{\mathcal P}$ und der Hauptasymptotik.
+\end{proof}
+
+\paragraph{Effektive Resthypothese.}
+Es gebe ein $\eta\in(0,\delta)$, so dass für
+$\sigma\in\{\mathrm G,\mathrm K\}$
+\[
+ N_{\mathcal A_{n,\sigma}^{\sharp}}(t)
+ =c_{n,\sigma}t^{-\delta}
+  +O\bigl(t^{-(\delta-\eta)}\bigr)
+ \qquad(t\downarrow0)
+\]
+gilt, wobei die Konstante im $O$ unabhängig von $n$ und $\sigma$ ist.
+Effektive Kreiszählsätze für feste Kleinsche Packungen sind bekannt
+\href{https://arxiv.org/abs/2205.13004}{(Kontorovich--Lutsko)};
+die hier noch zu prüfende Zusatzarbeit ist genau ihre uniforme Anwendung auf
+unserem kompakten Formraum.
+
+\begin{proposition}[Konditionale effektive Verfeinerung]
+Unter der effektiven Resthypothese verbessert sich
+\eqref{eq:global-main-asymptotic} zu
+\begin{equation}\label{eq:global-exact-count}
+ N_{\mathcal P}(\varepsilon)
+ =C_{\mathrm{glob}}\varepsilon^{-\delta}
+  +O\bigl(\varepsilon^{-(\delta-\eta)}\bigr).
+\end{equation}
+Folglich setzt sich die Radiuszeta meromorph in die Halbebene
+$\operatorname{Re}s>\delta-\eta$ fort und besitzt bei $s=\delta$ den
+einfachen Pol
+\[
+ Z_{\mathcal P}(s)
+ =\frac{\delta C_{\mathrm{glob}}}{s-\delta}
+  +\text{einen in }\operatorname{Re}s>\delta-\eta
+  \text{ holomorphen Term}.
+\]
+\end{proposition}
+
+\begin{proof}
+Für die Lücken mit $r_n\gg\varepsilon$ wird die Resthypothese nach
+Skalierung zu
+\[
+ N_{\mathcal A_{n,\sigma}}(\varepsilon)
+ =c_{n,\sigma}r_n^\delta\varepsilon^{-\delta}
+  +O\bigl(r_n^{\delta-\eta}
+  \varepsilon^{-(\delta-\eta)}\bigr).
+\]
+Die Fehler summieren sich, weil
+$\sum_n r_n^{\delta-\eta}<\infty$. Das Abschneiden der Hauptreihe bei
+$r_n\asymp\varepsilon$ kostet nur $O(1)$, da
+$\sum_{r_n\ll\varepsilon}r_n^\delta=O(\varepsilon^\delta)$.
+Die Skelettkette trägt lediglich $O(\log(1/\varepsilon))$ Kreise bei.
+Damit folgt \eqref{eq:global-exact-count}. Die Mellin-Identität
+\[
+ Z_{\mathcal P}(s)
+ =s\int_0^{R}N_{\mathcal P}(\varepsilon)
+  \varepsilon^{s-1}\,d\varepsilon
+\]
+liefert die Fortsetzung und den angegebenen Residuenwert.
+\end{proof}
+
+\section{Das projizierte Randmaß}
+
+Sei $\beta$ das faire Bernoulli-Maß auf $\{L,R\}^{\mathbb N}$. Die
+Stern--Brocot-Randkodierung schiebt $\beta$ auf das Minkowski-
+Fragezeichenmaß $\mu_{?}$ auf $[0,1]$. Für jede feste geometrische
+Wurzellücke ist die geometrische Kodierung eine projektive, auf dem
+abgeschlossenen Grundintervall glatte Koordinatenänderung $h_n$. Also gilt
+für das geometrische Randmaß
+\[
+ \nu_n=(h_n)_*\mu_{?}.
+\]
+
+\begin{proposition}[Singularität und typische Dimension]
+Das faire geometrische Randmaß $\nu_n$ ist singulär-stetig und hat vollen
+Träger auf seinem Grundintervall. Es ist exakt dimensional, und seine
+Maßdimension ist die des Minkowski-Maßes. Sie erfüllt die rigorosen Schranken
+\[
+ 0.874716305108207<\dim \nu_n<0.874716305108213.
+\]
+Insbesondere ist die zugehörige Lyapunov-Rate
+\[
+ \chi=\frac{\log2}{\dim\mu_{?}}
+ \approx0.7924251286.
+\]
+\end{proposition}
+
+\begin{proof}
+Glatte projektive Koordinatenwechsel mit von Null verschiedener Ableitung
+erhalten Singularität, Atomlosigkeit, vollen Träger und exakte Dimension.
+Für das Minkowski-Maß sind diese Eigenschaften und rigorose Schranken für
+die angegebene Dimension in
+\href{https://arxiv.org/abs/0706.0453}{Kesseböhmer--Stratmann} und
+\href{https://publicatio.bibl.u-szeged.hu/17247/1/corr3.pdf}{Mantica--M"{a}ki--Totik}
+dokumentiert.
+\end{proof}
+
+Die Stern--Brocot-Multifraktaltheorie liefert zudem den passenden Rahmen für
+die periodischen Adressen. Um die Dichte periodischer Dimensionswerte im
+vollständigen Spektrum als eigenen Satz zu zitieren, bleibt eine saubere
+Übertragung der parabolischen induzierten Kodierung auf unsere gewählte
+Definition der lokalen Dimension zu schreiben. Die Frage ist damit nicht
+mehr empirisch, sondern eine präzise Anwendung dieser Theorie.
+
+\section{Der minimale generatorstabile Beobachtungsraum}
+
+Die letzte offene Frage hat eine kanonische abstrakte Antwort. Sei $X$ der
+Raum markierter Descartes-Konfigurationen, $\mathcal A^*$ das Monoid der
+Generatorwörter und $\pi:X\to Y$ eine gewählte Beobachtung, etwa die
+Projektion auf $[0,1]$. Definiere
+\[
+ x\sim_\pi y
+ \quad\Longleftrightarrow\quad
+ \pi(gx)=\pi(gy)\quad\text{für alle }g\in\mathcal A^*.
+\]
+
+\begin{proposition}[Kanonischer Beobachtungsquotient]
+Jeder Apollonische Generator steigt zu einer wohldefinierten Funktion auf
+$X/{\sim_\pi}$ ab. Dieser Quotient ist der kleinste generatorstabile Raum,
+durch den $\pi$ faktorisiert: Jeder andere generatorstabile Zustandsraum,
+der alle zukünftigen Beobachtungen bestimmt, faktorisiert auf
+$X/{\sim_\pi}$.
+\end{proposition}
+
+\begin{proof}
+Aus $x\sim_\pi y$ folgt für jedes Generatorwort $h$ und jeden Generator
+$S_i$ die Gleichheit $\pi(hS_ix)=\pi(hS_iy)$. Also ist
+$S_ix\sim_\pi S_iy$, und $S_i$ steigt ab. Jede weitere ausreichende
+Beobachtung darf nur Paare identifizieren, die unter allen zukünftigen
+Generatorwörtern dieselbe Projektion besitzen; daher faktorisiert sie über
+den Quotienten.
+\end{proof}
+
+Dieser Satz löst die Minimalitätsfrage universell. Ob dieser Quotient in
+unserer speziellen Geometrie durch wenige reelle Faserkoordinaten, etwa eine
+markierte Descartes-Quadruple, beschrieben werden kann, bleibt eine echte
+konkrete Frage.
+
+\section{Lokale Dimensionen und die parabolische Kusp}
+
+Nach Proposition~9.1 ist das faire Bernoulli-Maß auf jedem geometrischen
+Randbaum ein glattes projektives Bild des Minkowski-Maßes. Insbesondere ist
+die typische lokale Dimension kein bloßer numerischer Hinweis mehr.
+
+\begin{proposition}[Lokale Dimension periodischer Adressen]
+Sei $q$ ein periodisches Wort, dessen Matrixprodukt $M_q$ strikt positive
+Einträge besitzt, und sei
+$\rho_q>1$ dessen dominanter Eigenwert, dann gilt für die lokale Dimension
+der periodischen Adresse
+\begin{equation}\label{eq:periodic-dimension}
+ d(q^\infty)=\frac{|q|\log2}{2\log\rho_q}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Da $M_q$ positiv ist, sind beide Komponenten von
+$M_q^k(a,b)^{\mathsf T}$ für jeden positiven Startvektor $(a,b)$ zu
+$\rho_q^k$ vergleichbar. Die geometrische Zylinderlänge ist daher nach
+\eqref{eq:comparison} zu $\rho_q^{-2k}$ vergleichbar, während das faire
+Bernoulli-Maß des Zylinders $2^{-k|q|}$ beträgt. Der Quotient der beiden
+Logarithmen liefert \eqref{eq:periodic-dimension}.
+\end{proof}
+
+Zwei Beispiele sind
+\[
+ d((LR)^\infty)=\frac{\log2}{2\log\varphi}\approx0.72021,
+\]
+und
+\[
+ d((LR^2L)^\infty)=
+ \frac{2\log2}{\log(3+2\sqrt2)}\approx0.78644.
+\]
+Die fast-parabolischen Wörter $q_n=L^{n-1}R$ liefern formal
+$d(q_n^\infty)\to+\infty$. Damit wird die Kusp nicht als einzelner
+Ausnahmeeffekt, sondern als Grenzbereich der periodischen Dynamik sichtbar.
+
+\begin{proposition}[Dichte periodischer Dimensionswerte]
+Die Menge der Dimensionswerte periodischer Adressen enthält eine in
+\[
+ \left[d((LR)^\infty),+\infty\right).
+\]
+dichte Teilmenge.
+\end{proposition}
+
+\begin{proof}
+Setze $U=LR$ und $V_m=L^{m-1}R$ für $m\ge2$. Beide Matrizen sind positiv.
+Für positive Matrizen $A,B$ folgt aus der Perron--Frobenius-Zerlegung
+\[
+ \log\rho(A^aB^b)
+ =a\log\rho(A)+b\log\rho(B)+O(1)
+\]
+für $a,b\to\infty$. Wendet man \eqref{eq:periodic-dimension} auf die
+Wörter $U^aV_m^b$ an, so nähern ihre Kehrwerte der Dimensionen genau die
+gewichteten Mittelwerte von $d(U^\infty)^{-1}$ und
+$d(V_m^\infty)^{-1}$ an. Mit dichten rationalen Verhältnissen $a:b$
+werden damit alle Werte im Intervall
+\[
+ [d(U^\infty),d(V_m^\infty)]
+\]
+dicht getroffen. Schließlich gilt
+\[
+ V_m=\begin{pmatrix}1&1\\m-1&m\end{pmatrix},
+ \qquad
+ \rho(V_m)
+ =\frac{m+1+\sqrt{(m+1)^2-4}}2,
+\]
+also $d(V_m^\infty)\to+\infty$. Die Vereinigung dieser Intervalle liefert
+die Behauptung.
+\end{proof}
+
+\begin{proposition}[Scharfer linker Spektrumsrand]
+Sei $x$ eine Stern--Brocot-Adresse, für die die lokale Dimension existiert.
+Dann gilt
+\[
+ d(x)\ge \frac{\log2}{2\log\varphi}.
+\]
+Gleichheit wird von der alternierenden periodischen Adresse
+$(LR)^\infty$ erreicht. Damit ist
+\[
+ \frac{\log2}{2\log\varphi}
+\]
+der linke Endpunkt des vollständigen lokalen Dimensionsspektrums.
+\end{proposition}
+
+\begin{proof}
+Seien $F_0=0$, $F_1=1$ die Fibonacci-Zahlen. Für ein Wort $w$ der Länge
+$n$ schreibe $(u_w,v_w)=M_w(1,1)^{\mathsf T}$. Induktion über $n$ liefert
+\[
+ \max(u_w,v_w)\le F_{n+2},
+ \qquad
+ u_w+v_w\le F_{n+3}.
+\]
+Denn eine Anwendung von $L$ oder $R$ ersetzt eines der beiden Paare durch
+$u_w+v_w$; zugleich wächst die Summe höchstens um die bisher größere
+Komponente. Aus \eqref{eq:comparison} folgt daher für die
+Zylinderlänge
+\[
+ \ell_w\ge \frac{c}{F_{n+2}^2}.
+\]
+Da $F_{n+2}=\varphi^{n+O(1)}$ und der faire Zylinder die Masse $2^{-n}$
+hat, ist jeder existierende Dimensionsgrenzwert mindestens
+$\log2/(2\log\varphi)$. Die Gleichheit für $(LR)^\infty$ folgt aus
+\eqref{eq:periodic-dimension}.
+\end{proof}
+
+\begin{corollary}[Abschluss des lokalen Spektrums]
+Für jeden festen geometrischen Randbaum sei
+\[
+ \operatorname{Spec}_{\mathrm{loc}}
+ =\{d(x):\text{ die lokale Dimension von }x\text{ existiert}\}.
+\]
+Dann gilt im erweiterten Intervall
+\[
+ \overline{\operatorname{Spec}_{\mathrm{loc}}}
+ =\left[\frac{\log2}{2\log\varphi},+\infty\right].
+\]
+\end{corollary}
+
+\begin{proof}
+Proposition~11.3 gibt die linke Einschlussrichtung. Proposition~11.2
+liefert eine dichte Teilmenge des ganzen rechten Halbstrahls durch
+periodische Adressen; die fast-parabolischen periodischen Wörter lassen
+deren Dimensionen gegen $+\infty$ gehen.
+\end{proof}
+
+\begin{corollary}[Wurzelunabhängigkeit]
+Die lokalen Dimensionsspektren und die Hausdorff-Dimensionen ihrer
+Niveaumengen sind für alle geometrischen Wurzellücken $G_n$ gleich.
+\end{corollary}
+
+\begin{proof}
+Nach Proposition~9.1 ist jedes geometrische Randmaß ein Bild des
+Minkowski-Maßes unter einer glatten projektiven Koordinatenänderung mit
+von Null verschiedener Ableitung auf dem kompakten Grundintervall.
+Solche Abbildungen und ihre Inversen sind bi-Lipschitz. Sie erhalten
+lokale Dimensionen und Hausdorff-Dimensionen von Niveaumengen.
+\end{proof}
+
+\begin{proposition}[Nichtperiodische Minimierer]
+Setze
+\[
+ d_*:=\frac{\log2}{2\log\varphi},
+ \qquad E_*:=\{x:d(x)=d_*\}.
+\]
+Dann enthält $E_*$ eine überabzählbare Menge nichtperiodischer Adressen.
+Diese konstruierte Teilmenge besitzt Hausdorff-Dimension $0$.
+\end{proposition}
+
+\begin{proof}
+Setze $U=LR$, $m_j=2^j$ und wähle für jede Folge
+$\varepsilon=(\varepsilon_j)_{j\ge1}\in\{0,1\}^{\mathbb N}$ die Adresse
+\[
+ w(\varepsilon)=U^{m_1}B_{\varepsilon_1}
+ U^{m_2}B_{\varepsilon_2}\cdots,
+ \qquad B_0=LL,\quad B_1=RR.
+\]
+Der Perronwert von $U$ ist $\varphi^2$. Daher existiert $A>0$ mit
+\[
+ \|U^m z\|_1\ge A\varphi^{2m}\|z\|_1
+ \qquad(m\ge1,\ z\in\R_{>0}^2).
+\]
+Die beiden Blöcke $B_0,B_1$ verkleinern die $1$-Norm nicht. Nach den
+ersten $J$ Blöcken hat das Wort die Länge
+\[
+ N_J=2\sum_{j=1}^Jm_j+2J,
+\]
+und seine Parameter erfüllen
+\[
+ \log(u_{w}v_{w})=2N_J\log\varphi+O(J).
+\]
+Tatsächlich gibt die Fibonacci-Schranke die entgegengesetzte obere
+Abschätzung für die $1$-Norm. Nach einem $U$-Block und nach einem der
+beiden Blöcke $B_i$ sind die Komponenten außerdem in einem festen
+Verhältnis, sodass ihr Produkt mit dem Quadrat der $1$-Norm vergleichbar
+ist. Dies gilt ebenso für Präfixe innerhalb eines $U$-Blocks, denn
+$J=O(\log N_J)$. Der geometrische Längenvergleich liefert folglich
+\[
+ -\log\ell_{n,w_1\cdots w_N}
+ =2N\log\varphi+o(N).
+\]
+Da der faire Zylinder die Masse $2^{-N}$ hat, ist die lokale Dimension
+gleich $d_*$. Die Blöcke $U^{m_j}$ enthalten unbeschränkt lange
+alternierende Läufe, während nach jedem solchen Lauf ein Doppelbuchstabe
+steht. Die Adressen sind daher verschieden und nichtperiodisch.
+
+Auf Stufe $J$ überdecken $2^J$ Zylinder die konstruierte Menge; ihre
+Längen sind höchstens
+$\exp(-2N_J\log\varphi+O(J))$. Für jedes $s>0$ geht die zugehörige
+$s$-Hausdorffsumme gegen $0$. Die Teilmenge hat somit
+Hausdorff-Dimension $0$.
+\end{proof}
+
+\begin{proposition}[Aperiodische Realisierung aller endlichen Werte]
+Für jedes
+\[
+ d\in\left[\frac{\log2}{2\log\varphi},+\infty\right)
+\]
+gibt es eine nichtperiodische Adresse, deren lokale Dimension gleich $d$
+ist.
+\end{proposition}
+
+\begin{proof}
+Der linke Endpunkt ist durch Proposition~11.6 realisiert. Sei nun
+$d>d_*$ und setze $\gamma_d=\log2/(2d)$. Für ein positives Wort $W$
+schreibe
+\[
+ \gamma(W)=\frac{\log\rho_W}{|W|}.
+\]
+Mit $U=LR$ gilt $\gamma(U)=\log\varphi$. Für
+$V_m=L^{m-1}R$ gilt dagegen $\gamma(V_m)\to0$. Wähle also $m$ mit
+\[
+ \gamma(V_m)<\gamma_d<\gamma(U)
+\]
+und $\theta\in(0,1)$ so, dass
+\[
+ \gamma_d=\theta\gamma(U)+(1-\theta)\gamma(V_m).
+\]
+
+Für $j\ge1$ wähle ganze Zahlen $p_j,q_j\ge1$ mit
+\[
+ 2p_j+m q_j=j+O(1),
+ \qquad
+ \frac{2p_j}{2p_j+m q_j}\longrightarrow\theta,
+\]
+und betrachte die Adresse
+\[
+ U^{p_1}V_m^{q_1}U^{p_2}V_m^{q_2}\cdots.
+\]
+Die Perron--Frobenius-Zerlegung der beiden positiven Blöcke liefert nach
+$J$ Makroblöcken
+\[
+ \log\|M_w\|_1
+ =\sum_{j\le J}\bigl(p_j\log\rho_U+q_j\log\rho_{V_m}\bigr)+O(J).
+\]
+Die Wortlänge ist von Ordnung $J^2$, während ein Makroblock nur Länge
+$O(J)$ besitzt. Dieselbe Grenzrate gilt folglich für alle Präfixe. Der
+geometrische Längenvergleich ergibt
+\[
+ -\log\ell_{n,w_1\cdots w_N}=2\gamma_dN+o(N),
+\]
+also lokale Dimension $d$. Die Blöcke $U^{p_j}$ enthalten unbeschränkt
+lange alternierende Läufe, während die Blöcke $V_m^{q_j}$ unbeschränkt
+oft Doppelbuchstaben erzeugen. Die Adresse kann daher nicht periodisch
+sein.
+\end{proof}
+
+Die typische lokale Dimension ist die Maßdimension des Minkowski-Maßes und
+erfüllt somit
+\[
+ 0.874716305108207<d_{\mathrm{typ}}<0.874716305108213,
+ \qquad \chi\approx0.7924251286.
+\]
+Sie entspricht dem fast sicheren Grenzwert
+\[
+ \chi=\lim_{n\to\infty}-\frac1n\log\ell_{w_1\cdots w_n}
+\]
+in der Stern--Brocot-Kodierung.
+
+\begin{proposition}[Kuspuntergrenze]
+Für die Menge $E(+\infty)$ der Randpunkte mit unendlicher lokaler
+Dimension gilt
+\[
+ \Haus E(+\infty)\ge\frac12.
+\]
+\end{proposition}
+
+\begin{proof}
+Setze $N_j=(j+2)^2$ und wähle in der Stufe $j$ die geraden Schrittweiten
+\[
+ D_j=\{N_j,N_j+2,\ldots,2N_j\}.
+\]
+Wir betrachten alle unendlichen Konkatenationen der Blöcke $L^aR$ mit
+$a\in D_j$ in Stufe $j$. Nach einem ganzen Block sind die beiden
+Parameter in einem festen Verhältnis. Die direkte Rekursion zeigt daher
+für einen Zylinder der Stufe $J$
+\[
+ \ell\asymp\prod_{j=1}^J a_j^{-2}.
+\]
+Die Auswahl jedes zweiten Werts lässt zwischen zwei gewählten Kindern
+jeweils mindestens einen vollständigen Zwischenzylinder. Die
+Separation ist somit mit der Zylinderlänge vergleichbar. Das
+Moran-Massenprinzip liefert deshalb
+\[
+ \Haus\mathcal C
+ =\lim_{J\to\infty}
+ \frac{\sum_{j\le J}\log|D_j|}
+ {2\sum_{j\le J}\log N_j}=\frac12
+\]
+für die konstruierte Menge $\mathcal C$.
+
+Die Worttiefe eines Stufe-$J$-Zylinders ist von Ordnung
+$\sum_{j\le J}N_j\asymp J^3$, während sein negativer Längenlogarithmus
+von Ordnung $\sum_{j\le J}\log N_j=O(J\log J)$ ist. Innerhalb eines
+Blocks fügt ein Präfix $L^t$ nur einen zusätzlichen Term
+$O(\log(t+1))$ zum Längenlogarithmus hinzu. Folglich ist für jedes
+Element von $\mathcal C$
+\[
+ \frac{n\log2}{-\log\ell_{w_1\cdots w_n}}\longrightarrow+\infty.
+\]
+Also ist $\mathcal C\subseteq E(+\infty)$, was die Behauptung beweist.
+\end{proof}
+
+\begin{conjecture}
+Es gilt die scharfe Gleichheit
+\[
+ \Haus E(+\infty)=\frac12.
+\]
+Die noch fehlende Richtung ist eine obere Schranke für alle Adressen mit
+subexponentiellem geometrischem Zylinderschwund.
+\end{conjecture}
+
+\subsection{Nächster Forschungsblock: Tiefenstatistik}
+
+Für eine feste Wurzellücke $G_n$ und eine Baumtiefe $k$ definieren wir
+die Ebenensumme
+\[
+ \mathcal Z_{n,k}(s)=\sum_{|w|=k}\ell_{n,w}^{,s}.
+\]
+Sie misst, wie sich die geometrische Länge auf die $2^k$ Lücken einer
+symbolischen Tiefe verteilt.
+
+\begin{proposition}[Tiefenerhaltung und Extremalskalen]
+Für jedes $n$ und $k\ge0$ gilt
+\[
+ \mathcal Z_{n,k}(1)=\ell_{n,\varnothing}
+ =\frac{2}{a_nb_n}.
+\]
+Außerdem existieren positive, von $k$ unabhängige Konstanten, so dass
+\[
+ \max_{|w|=k}\ell_{n,w}\asymp k^{-1},
+ \qquad
+ \min_{|w|=k}\ell_{n,w}\asymp\varphi^{-2k}.
+\]
+\end{proposition}
+
+\begin{proof}
+Die beiden Kinder eines Parameterpaars $(a,b)$ haben nach
+\eqref{eq:gap-length-exact} Längen
+\[
+ \frac{2}{a(a+b)}\quad\text{und}\quad
+ \frac{2}{b(a+b)},
+\]
+deren Summe $2/(ab)$ ist. Iteration beweist die erste Behauptung.
+
+Für den oberen Extremalwert wächst das Produkt der Parameter bei jedem
+Schritt mindestens um $\min(a_n,b_n)^2$:
+\[
+ a(a+b)=ab+a^2,\qquad (a+b)b=ab+b^2.
+\]
+Daher ist jede Lücke der Tiefe $k$ höchstens von Ordnung $k^{-1}$.
+Der parabolische Ast $L^k$ besitzt dagegen das Produkt
+$a_n(b_n+ka_n)$ und damit Länge von Ordnung $k^{-1}$.
+
+Die Fibonacci-Schranke aus Proposition~11.3 und
+\eqref{eq:geometric-comparison} liefert die untere Schranke
+$\ell_{n,w}\gg\varphi^{-2k}$ für alle Wörter der Tiefe $k$. Der
+alternierende Ast $U^{\lfloor k/2\rfloor}$, bei ungeradem $k$ um einen
+Buchstaben ergänzt, liefert die umgekehrte Schranke.
+\end{proof}
+
+\begin{corollary}[Erster Rahmen für die Ebenensummen]
+Für jedes $s>1$ gibt es Konstanten $c_{n,s},C_{n,s}>0$ mit
+\[
+ c_{n,s}k^{-s}\le\mathcal Z_{n,k}(s)
+ \le C_{n,s}k^{1-s}
+ \qquad(k\ge1).
+\]
+\end{corollary}
+
+\begin{proof}
+Die untere Schranke folgt vom parabolischen Ast. Für die obere gilt
+\[
+ \mathcal Z_{n,k}(s)
+ \le \left(\max_{|w|=k}\ell_{n,w}\right)^{s-1}
+ \sum_{|w|=k}\ell_{n,w},
+\]
+und die vorangehende Proposition liefert die Behauptung.
+\end{proof}
+
+Damit ist die vermutete scharfe Form
+\[
+ \mathcal Z_{n,k}(s)\sim C_{n,s}k^{-s}\qquad(s>1)
+\]
+auf eine konkrete Verteilungsfrage reduziert: Es muss kontrolliert werden,
+wie viele Lücken einer Tiefe mit dem parabolischen Maßstab $k^{-1}$
+vergleichbar bleiben.
+
+\subsubsection{Parabolische Randstrahlen im Referenzmodell}
+
+Für das Referenzintervall mit Parameterpaar $(1,1)$ sei
+\[
+ \mathcal Z_k^{\mathrm{ref}}(s)
+ =\sum_{|w|=k}\left(\frac{2}{u_wv_w}\right)^s.
+\]
+Die maximalen Endläufe liefern bereits eine explizite untere
+Asymptotik.
+
+\begin{proposition}[Parabolischer Liminf]
+Für $s>1$ gilt
+\[
+ \liminf_{k\to\infty}k^s\mathcal Z_k^{\mathrm{ref}}(s)
+ \ge 2^{s+1}\frac{\zeta(2s-1)}{\zeta(2s)}.
+\]
+\end{proposition}
+
+\begin{proof}
+Betrachte zunächst Wörter, die nach einem festen Präfix $v$ nur noch mit
+$L$ fortgesetzt werden. Endet $v$ mit $R$ oder ist $v$ leer und besitzt
+es das Paar $(a,b)$, so hat $vL^m$ die Länge
+\[
+ \frac{2}{a(b+ma)}.
+\]
+Für $k=|v|+m$ trägt dieser Strahl daher im Limes
+$(2/a^2)^s$ zu $k^s\mathcal Z_k^{\mathrm{ref}}(s)$ bei. Die möglichen
+Paare sind genau $(1,1)$ und die teilerfremden Paare $a>b\ge1$. Ihre
+Summe ist
+\[
+ \sum_{a\ge1}\frac{\varphi(a)}{a^{2s}}
+ =\frac{\zeta(2s-1)}{\zeta(2s)}.
+\]
+Die spiegelbildlichen $R$-Strahlen liefern denselben Beitrag. Jede
+endliche Teilmenge dieser Strahlen ist ab einer festen Tiefe disjunkt.
+Zuerst für endliche Teilmengen den Grenzwert zu bilden und dann zu
+erschöpfen beweist die Behauptung.
+\end{proof}
+
+\begin{conjecture}[Scharfe parabolische Ebenenasymptotik]
+Für jedes $s>1$ gilt im Referenzmodell
+\[
+ \mathcal Z_k^{\mathrm{ref}}(s)
+ \sim 2^{s+1}\frac{\zeta(2s-1)}{\zeta(2s)}\,k^{-s}.
+\]
+Die exakte Auswertung bis Tiefe $26$ stützt dies: Für $s=2$ ist
+$k^2\mathcal Z_k^{\mathrm{ref}}(2)=8.46727$, während die
+Kandidatenkonstante $8\zeta(3)/\zeta(4)$ ungefähr $8.88501$ beträgt.
+\end{conjecture}
+
+\begin{remark}[Numerische Signatur der Randstrahlen]
+Die exakte Baumrechnung trennt die W\"orter auch nach der Zahl ihrer
+Symbolwechsel. Bei Tiefe $26$ und $s=2$ entfallen $87{,}61\%$ der
+Ebenensumme auf die beiden wechselarmen Randstrahlen ohne Wechsel,
+$8{,}73\%$ auf W\"orter mit genau einem Wechsel und nur $3{,}66\%$ auf
+alle \"ubrigen W\"orter. Auch nach der L\"ange des maximalen Endlaufs
+konzentriert sich die Masse am Rand: Die Anteile der Endlaufl\"angen
+$26,25,24,23$ sind jeweils ungef\"ahr
+\[
+ 0.87612,\quad 0.06139,\quad 0.02628,\quad 0.01274.
+\]
+Dies ist nur Evidenz, isoliert aber genau den Mechanismus der folgenden
+Erneuerungsfrage. Das auswertbare Skript
+\texttt{tools/depth-stats.mjs} dokumentiert die Rechnung.
+\end{remark}
+
+\begin{remark}[Zeta-Konsistenz der Kandidatenkonstante]
+Die Tiefensummen zerlegen die vollständige Referenzzeta zu
+\[
+ \sum_{k\ge0}\mathcal Z_k^{\mathrm{ref}}(s)
+ =2^s\frac{\zeta(s)^2}{\zeta(2s)}.
+\]
+Für
+\[
+ C_s=2^{s+1}\frac{\zeta(2s-1)}{\zeta(2s)}
+\]
+gilt dagegen
+\[
+ C_s\zeta(s)\sim\frac{12}{\pi^2}(s-1)^{-2}
+ \qquad(s\downarrow1).
+\]
+Dies stimmt exakt mit dem Doppelpolkoeffizienten der vollständigen
+Referenzzeta überein. Die parabolische Ebenenasymptotik besitzt damit
+die korrekte globale Zeta-Normierung.
+\end{remark}
+
+\begin{remark}[Präzise verbleibende Erneuerungsfrage]
+Zerlege jedes Wort der Tiefe $k$ eindeutig als $vL^m$ oder $vR^m$, wobei
+der Endlauf maximal ist. Sei $j=|v|$ die Präfixtiefe. Die Konjektur folgt
+bereits aus der terminalen Straffheit
+\[
+ \lim_{J\to\infty}\limsup_{k\to\infty}
+ k^s\sum_{\substack{|w|=k\\ j(w)>J}}
+ \left(\frac{2}{u_wv_w}\right)^s=0.
+\]
+Denn für jedes feste Präfix liefert der verbleibende Endlauf genau den
+in Proposition~11.12 berechneten Grenzbeitrag. Damit ist die noch offene
+obere Schranke als induzierte parabolische Erneuerungsaussage formuliert,
+nicht mehr als unbestimmte Abschätzung über alle Wörter.
+\end{remark}
+
+\section{Offene Fragen}
+
+\begin{enumerate}[leftmargin=*,label=\arabic*.]
+\item Lässt sich der effektive lokale Kreis-Zählsatz auf dem kompakten
+Formraum unserer Wurzellücken mit einem einheitlichen Exponenten und einer
+einheitlichen Restkonstante formulieren? Dann verfeinert sich
+\eqref{eq:global-main-asymptotic} zu \eqref{eq:global-exact-count}, und
+die Abel-Grenze wird zu einem echten meromorphen Residuum.
+ \item Gilt für jede Wurzellücke die scharfe Ebenenasymptotik
+ \[
+  \mathcal Z_{n,k}(s)\sim C_{n,s}k^{-s}
+ \]
+ für $s>1$?
+\item Welche Hausdorff-Dimensionen besitzen die Niveauklassen
+\[
+ \left[\frac{\log2}{2\log\varphi},+\infty\right]
+\]
+und wie verändern sie sich zwischen dem linken Rand, dem typischen Wert
+und der parabolischen Kusp? Die Realisierung aller endlichen Werte durch
+nichtperiodische Adressen ist bereits gesichert.
+ \item Besitzt der kanonische Quotient $X/{\sim_\pi}$ eine endliche oder
+ niedrigdimensionale geometrische Realisierung?
+ \item Gilt die Kuspvermutung $\Haus E(+\infty)=1/2$? Die Untergrenze ist
+ nun bewiesen; offen ist allein die passende globale Oberschranke.
+\end{enumerate}
+
+\section{Ausblick}
+
+Die Ausgangsfrage hat zwei gleichwertige, aber metrisch verschiedene
+Antworten. Globale Halbierung erzeugt ein lineares dyadisches Raster.
+Tangenz erzeugt eine Möbius-Dynamik, in der gleiche symbolische Information
+pro Schritt geometrisch sehr ungleich skaliert wird. Genau diese Verzerrung
+eröffnet die Zeta- und Multifraktalfragen. Für die kanonische Randfamilie
+an der Halbierungsgeraden ist das Wörter--Lücken-Wörterbuch nun vollständig
+geometrisch begründet; Exponent und Zählordnung sind dort Theoreme. Auch die
+Außenkreisfamilie ist durch eine Cayley-Transformation auf denselben
+Mechanismus zurückgeführt. Für die vollständige Packung liegt nun eine
+eindeutige Zählkonvention vor; kritischer Exponent, Zählordnung und
+Zählhauptkonstante sind bestimmt. Der nächste sinnvolle Schritt ist nun die
+uniform effektive lokale Zählung, die einen globalen Potenzrestterm und eine
+meromorphe Zeta-Fortsetzung liefern würde. Für das Multifraktalspektrum ist
+der linke Rand nun scharf bestimmt, und jeder endliche Wert ist auch
+nichtperiodisch realisierbar; periodische Werte sind darüber hinaus dicht.
+Für die parabolische Kusp ist die Untergrenze $1/2$ bewiesen. Offen
+bleiben die Ebenensummen, die Hausdorff-Dimensionen der endlichen
+Niveauklassen und die globale Oberschranke für die Kusp.
+
+\end{document}

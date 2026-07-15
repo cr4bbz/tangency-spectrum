@@ -1,0 +1,26 @@
+\begin{tikzpicture}[x=4.1cm,y=4.1cm,baseline=(current bounding box.center)]
+  \colorlet{outer}{black!70}
+  \colorlet{circle}{blue!60!black}
+  \colorlet{circlefill}{blue!12}
+  \colorlet{guide}{black!35}
+
+  \draw[outer,very thick] (-1,0) arc[start angle=180,end angle=0,radius=1];
+  \draw[outer,thick] (-1.08,0) -- (1.08,0);
+
+  \foreach \x/\r in {0/0.5,{0.70710678}/0.25,{-0.70710678}/0.25,{0.94280904}/0.05555556,{-0.94280904}/0.05555556} {
+    \draw[circle,fill=circlefill] (\x,\r) circle[radius=\r];
+    \draw[guide,densely dashed] (\x,0) -- (\x,\r);
+    \fill[circle] (\x,0) circle[radius=0.012];
+  }
+
+  \node[font=\scriptsize,below] at (0,0) {$p_0=\tfrac12$};
+  \node[font=\scriptsize,below left] at (-0.70710678,0) {$p_{-1}$};
+  \node[font=\scriptsize,below right] at (0.70710678,0) {$p_1$};
+  \node[font=\scriptsize,below left] at (-1,0) {$p=0$};
+  \node[font=\scriptsize,below right] at (1,0) {$p=1$};
+
+  \node[font=\small,align=center] at (0,1.16)
+    {Einheitskreis $x^2+y^2=1$ und Skelettkreise};
+  \node[font=\scriptsize,align=center] at (0,-0.25)
+    {$p=(x+1)/2$, \quad $r(p)=2p(1-p)$};
+\end{tikzpicture}

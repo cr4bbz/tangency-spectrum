@@ -2,8 +2,9 @@
 
 ## Aktueller Forschungsentwurf
 
-**Von gleichmaessigen Punkten zu projektiver Tangenzdynamik**  
-*Julian L. Voigt*  
+**Von gleichmaessigen Punkten zu projektiver Tangenzdynamik**
+
+*Julian L. Voigt*
 15. Juli 2026
 
 - [Paper als PDF](texworks/tangency_spectrum.pdf)

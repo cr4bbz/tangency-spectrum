@@ -1,5 +1,19 @@
 # Tangency Spectrum
 
+## Aktueller Forschungsentwurf
+
+**Von gleichmaessigen Punkten zu projektiver Tangenzdynamik**  
+*Julian L. Voigt*  
+15. Juli 2026
+
+- [Paper als PDF](texworks/tangency_spectrum.pdf)
+- [LaTeX-Quelle](texworks/tangency_spectrum.tex)
+- [Paper Review und Forschungsprotokoll](texworks/PAPER_REVIEW.md)
+
+Der Entwurf untersucht die Tangenzgeometrie auf dem Halbkreis ueber ihre
+Stern--Brocot-Kodierung, Zeta-Funktionen und das entstehende parabolische
+Multifraktal.
+
 Research notes on point distributions on the interval \([0,1]\), starting from
 equal spacing and moving toward projective tangency dynamics, Stern-Brocot
 coding, zeta functions, and multifractal boundary measures.
@@ -26,4 +40,3 @@ The main working note is:
 And the current core figure is:
 
 - [projektion_skelettkette.svg](projektion_skelettkette.svg)
-

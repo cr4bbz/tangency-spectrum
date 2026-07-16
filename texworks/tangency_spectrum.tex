@@ -1997,7 +1997,7 @@ und den Rang-eins-Operator
 \]
 Dann gilt für jedes $s>1$
 \[
- \left\|m^{2s}R_m-\Pi_s\right\|_{C^1(Y)\to C(Y)}
+ \left\|m^{2s}R_m-\Pi_s\right\|_{C^1(Y)\to C^1(Y)}
  \ll_s\frac1m
  \qquad(m\to\infty).
 \]
@@ -2008,20 +2008,49 @@ Für $x\in Y$ gilt gleichmäßig
 \[
  m^{2s}\bigl(1+(m+1)x\bigr)^{-2s}
  =
- x^{-2s}\left(1+O_s\!\left(\frac1m\right)\right).
+ x^{-2s}\left(1+O_s\!\left(\frac1m\right)\right),
 \]
-Ferner ist
+und dieselbe Abschätzung gilt nach Ableitung nach $x$. Ferner ist
 \[
  1-G_m(x)
  =
  \frac{x}{1+(m+1)x}
- =O\!\left(\frac1m\right).
+ =O\!\left(\frac1m\right),
+ \qquad
+ G_m'(x)=O\!\left(\frac1{m^2}\right).
 \]
 Daher folgt für $f\in C^1(Y)$
 \[
- f(G_m(x))=f(1)+O\!\left(\frac{\|f'\|_\infty}{m}\right).
+ \|f\circ G_m-f(1)\|_{C^1}
+ \ll\frac{\|f\|_{C^1}}m.
 \]
 Multiplikation der beiden Abschätzungen liefert die Behauptung.
+\end{proof}
+
+\begin{proposition}[Starke induzierte Resolvente]
+Für jedes $s>1$ konvergiert
+\[
+ \sum_{n\ge0}\mathcal G_s^n
+\]
+auch in der Operatornorm auf $C^1(Y)$.
+\end{proposition}
+
+\begin{proof}
+Schreibe $g_m(x)=|G_m'(x)|^s$. Dann gilt
+\[
+ \|(\mathcal G_sf)'\|_\infty
+ \le D_s\|f\|_\infty+\kappa_s\|f'\|_\infty,
+\]
+wobei
+\[
+ D_s=\sum_{m\ge0}\|g_m'\|_\infty<\infty,
+ \qquad
+ \kappa_s\le
+ \sum_{m\ge0}\left(\frac2{m+3}\right)^{2s+2}<1.
+\]
+Zusammen mit der bereits bewiesenen exponentiellen Abschätzung auf
+$C(Y)$ ergibt Iteration eine exponentielle Abschätzung auf $C^1(Y)$.
+Damit folgt die Resolventenaussage.
 \end{proof}
 
 \begin{remark}[Defekter induzierter Bereich]

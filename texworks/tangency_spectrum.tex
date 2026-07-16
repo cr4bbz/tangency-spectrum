@@ -1732,20 +1732,102 @@ Referenzzeta überein. Die parabolische Ebenenasymptotik besitzt damit
 die korrekte globale Zeta-Normierung.
 \end{remark}
 
-\begin{remark}[Präzise verbleibende Erneuerungsfrage]
-Zerlege jedes Wort der Tiefe $k$ eindeutig als $vL^m$ oder $vR^m$, wobei
-der Endlauf maximal ist. Sei $j=|v|$ die Präfixtiefe. Die Konjektur folgt
-bereits aus der terminalen Straffheit
+\subsubsection{Induzierte parabolische Erneuerung}
+
+Für $j\ge1$ sei $\mathcal V_j^R$ die Menge der Wörter der Länge $j$,
+die mit $R$ enden; außerdem setze
+$\mathcal V_0^R=\{\varnothing\}$. Hat
+$v\in\mathcal V_j^R$ das Parameterpaar $(a_v,b_v)$, so definieren wir
+die einseitige Erneuerungsmasse
 \[
- \lim_{J\to\infty}\limsup_{k\to\infty}
- k^s\sum_{\substack{|w|=k\\ j(w)>J}}
- \left(\frac{2}{u_wv_w}\right)^s=0.
+ A_j(s)=\sum_{v\in\mathcal V_j^R}a_v^{-2s}.
 \]
-Denn für jedes feste Präfix liefert der verbleibende Endlauf genau den
-in Proposition~11.12 berechneten Grenzbeitrag. Damit ist die noch offene
-obere Schranke als induzierte parabolische Erneuerungsaussage formuliert,
-nicht mehr als unbestimmte Abschätzung über alle Wörter.
-\end{remark}
+
+\begin{proposition}[Exakte Erneuerungsidentität]
+Für jedes $s>0$ und jede Tiefe $k\ge1$ gilt
+\[
+ \mathcal Z_k^{\mathrm{ref}}(s)
+ =
+ 2^{s+1}\sum_{j=0}^{k-1}
+ \sum_{v\in\mathcal V_j^R}
+ \frac{1}{\bigl(a_v(b_v+(k-j)a_v)\bigr)^s}.
+\]
+Ferner gilt für $s>1$
+\[
+ \sum_{j\ge0}A_j(s)
+ =
+ \sum_{a\ge1}\frac{\varphi(a)}{a^{2s}}
+ =
+ \frac{\zeta(2s-1)}{\zeta(2s)}.
+\]
+\end{proposition}
+
+\begin{proof}
+Jedes Wort der Tiefe $k$, das mit $L$ endet, besitzt eindeutig die Form
+$vL^m$ mit $v\in\mathcal V_j^R$, $m=k-j\ge1$. Seine Länge ist
+$2/[a_v(b_v+ma_v)]$. Die Wörter mit terminalem $R$ sind das Spiegelbild;
+dies erklärt den Faktor $2^{s+1}$.
+
+Die endlichen Wörter in
+$\bigsqcup_{j\ge0}\mathcal V_j^R$ entsprechen bijektiv den Paaren
+$(1,1)$ sowie den positiven teilerfremden Paaren $(a,b)$ mit $a>b$.
+Für festes $a\ge2$ gibt es genau $\varphi(a)$ solche Werte von $b$;
+der leere Präfix liefert den Term $a=1$.
+\end{proof}
+
+\begin{proposition}[Ausreichendes Kernkriterium]
+Sei $s>1$. Gilt
+\[
+ A_j(s)\ll_s (j+1)^{-2s},
+\]
+so folgt die scharfe parabolische Ebenenasymptotik
+\[
+ \mathcal Z_k^{\mathrm{ref}}(s)
+ \sim
+ 2^{s+1}\frac{\zeta(2s-1)}{\zeta(2s)}\,k^{-s}.
+\]
+\end{proposition}
+
+\begin{proof}
+Für festes $J$ liefert die Erneuerungsidentität
+\[
+ \lim_{k\to\infty}
+ k^s\,2^{s+1}\sum_{j=0}^{J}
+ \sum_{v\in\mathcal V_j^R}
+ \frac{1}{\bigl(a_v(b_v+(k-j)a_v)\bigr)^s}
+ =
+ 2^{s+1}\sum_{j=0}^{J}A_j(s).
+\]
+Für den Rest folgt aus $b_v+(k-j)a_v\ge(k-j)a_v$
+\[
+ 0\le k^s\mathcal R_{k,J}(s)
+ \le
+ 2^{s+1}k^s
+ \sum_{j=J+1}^{k-1}(k-j)^{-s}A_j(s).
+\]
+Im Bereich $j\le k/2$ ist $k/(k-j)\le2$, sodass dieser Ausdruck durch
+ein konstantes Vielfaches von
+$\sum_{j>J}(j+1)^{-2s}$ beschränkt ist. Im Bereich $j>k/2$ ist er
+durch
+\[
+ C_s k^{-s}\sum_{m=1}^{\lfloor k/2\rfloor}m^{-s}
+\]
+beschränkt und verschwindet für $k\to\infty$. Zuerst
+$k\to\infty$ und dann $J\to\infty$ liefert die Behauptung.
+\end{proof}
+
+\paragraph{Kernfrage.}
+Die noch offene Aufgabe ist damit auf die einseitige Abschätzung
+\[
+ A_j(s)\ll_s j^{-2s}
+ \qquad(s>1)
+\]
+reduziert. Sie ist scharf in der Größenordnung, denn der parabolische
+Präfix $R^j$ liefert bereits den Summanden $(j+1)^{-2s}$. Im Unterschied
+zur ursprünglichen Ebenensumme enthält $A_j(s)$ nur die festgehaltene
+Koordinate vor dem terminalen Lauf. Diese einseitige Form ist der
+natürliche Ansatzpunkt für eine induzierte parabolische Erneuerung.
+
 
 \section{Offene Fragen}
 

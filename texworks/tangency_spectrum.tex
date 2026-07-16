@@ -2324,6 +2324,82 @@ $I-\mathcal G(s,z)$ diskret erfasst. Erst dann kann die Lage dynamischer
 Resonanzen mit den arithmetischen Singularitäten von
 $\zeta(2s)^{-1}$ sinnvoll verglichen werden.
 
+\subsection{Holomorpher Fredholmraum}
+
+Setze
+\[
+ \Omega=D\!\left(1,\frac34\right)
+\]
+und bezeichne mit $\mathcal A(\Omega)$ den Banachraum der auf
+$\Omega$ holomorphen und auf $\overline\Omega$ stetigen Funktionen,
+versehen mit der Supremumsnorm.
+
+\begin{proposition}[Holomorphe Fredholmfamilie]
+Für jedes $m\ge0$ gilt
+\[
+ G_m(\overline\Omega)\Subset\Omega.
+\]
+Folglich ist $\mathcal G(s,z)$ für
+$\operatorname{Re}s>1/2$ und $|z|\le1$ eine kompakte, in $s$
+holomorphe Operatorfamilie auf $\mathcal A(\Omega)$. Für jedes feste
+$z$ mit $|z|\le1$ besitzt
+\[
+ (I-\mathcal G(s,z))^{-1}
+\]
+eine meromorphe Fortsetzung in die Halbebene
+$\operatorname{Re}s>1/2$. Ihre Nichtinvertibilitäten sind dort diskret.
+Ferner ist die Halbebene
+\[
+ \operatorname{Re}s>1
+\]
+resonanzfrei.
+\end{proposition}
+
+\begin{proof}
+Für $w\in\overline\Omega$ ist $\operatorname{Re}w\ge1/4$. Daher
+gilt
+\[
+ |G_m(w)-1|
+ =\frac{|w|}{|1+(m+1)w|}
+ \le\frac{|w|}{|1+w|}
+ <\frac34.
+\]
+Die letzte strikte Ungleichung folgt direkt aus
+$|w-1|\le3/4$. Damit liegen die Bilder aller Zweige kompakt in
+$\Omega$. Die Gewichte
+$(1+(m+1)w)^{-2s}$ sind dort holomorph und auf kompakten
+$s$-Mengen durch ein Vielfaches von
+$(m+1)^{-2\operatorname{Re}s}$ beschränkt. Die Reihe für
+$\mathcal G(s,z)$ konvergiert daher in Operatornorm für
+$\operatorname{Re}s>1/2$ und ist als Normgrenzwert kompakter
+gewichteter Kompositionsoperatoren kompakt.
+
+Für reelles $\sigma>1$ liefert die zuvor bewiesene Resolvente
+\[
+ \|\mathcal G(\sigma,1)^n\|\ll
+ \left(\frac49\right)^{n(\sigma-1)}.
+\]
+Für komplexes $s$ mit $\operatorname{Re}s=\sigma$ und $|z|\le1$
+gilt punktweise
+\[
+ |\mathcal G(s,z)^nf|
+ \le\mathcal G(\sigma,1)^n|f|.
+\]
+Also ist $I-\mathcal G(s,z)$ in der Halbebene
+$\operatorname{Re}s>1$ invertierbar. Der analytische
+Fredholm-Satz liefert die meromorphe Fortsetzung und die Diskretheit
+der verbleibenden Nichtinvertibilitäten.
+\end{proof}
+
+\begin{remark}[Dynamische Resonanzen]
+Für festes $z$ nennen wir die diskreten Punkte in
+$\operatorname{Re}s>1/2$, an denen
+$I-\mathcal G(s,z)$ nicht invertierbar ist, die dynamischen
+Resonanzen der induzierten Tangenzdynamik. Sie sind von den
+arithmetischen Singularitäten der expliziten Schnittebene $z=1$
+zunächst unabhängig definiert.
+\end{remark}
+
 \section{Offene Fragen}
 
 \begin{enumerate}[leftmargin=*,label=\arabic*.]

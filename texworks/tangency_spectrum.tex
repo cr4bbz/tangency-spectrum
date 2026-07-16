@@ -594,6 +594,159 @@ $(u+v)^2$ der ersten freien Descartes-Kreise. Eine Aussage über alle tieferen
 Binnenkreise ist damit ausdrücklich noch nicht getroffen.
 \end{remark}
 
+\subsection{Zweiseitige Leitkoeffizienten}
+
+Setze
+\[
+ R(s)=\sum_{n\ge0}r_n^s,
+ \qquad R_1=R(1).
+\]
+Wegen $r_n\asymp q^{-2n}$ ist $R(s)$ für jedes $s>0$ endlich und
+$R(s)\to R_1$ für $s\downarrow1$. Die folgenden Aussagen bestimmen
+noch nicht die exakten geometrischen Leitkoeffizienten. Sie machen aber
+die aus dem uniformen Vergleich bereits erzwungene Koeffizientenhülle
+explizit.
+
+\begin{corollary}[Abel-Hülle der Randzeta]
+Für die rechte Randfamilie gilt
+\[
+ \frac{12R_1}{\pi^2q^2}
+ \le
+ \liminf_{s\downarrow1}(s-1)^2Z_\partial^+(s)
+ \le
+ \limsup_{s\downarrow1}(s-1)^2Z_\partial^+(s)
+ \le
+ \frac{12R_1}{\pi^2}.
+\]
+\end{corollary}
+
+\begin{proof}
+Der Vergleich \eqref{eq:geometric-comparison} liefert für $s>1$
+\[
+ \frac{2^s}{q^{2s}}R(s)Z_{\mathrm{ref}}(s)
+ \le Z_\partial^+(s)
+ \le 2^sR(s)Z_{\mathrm{ref}}(s).
+\]
+Da
+\[
+ Z_{\mathrm{ref}}(s)
+ \sim\frac6{\pi^2}(s-1)^{-2}
+ \qquad(s\downarrow1),
+\]
+folgt die Behauptung nach Multiplikation mit $(s-1)^2$ und
+Grenzübergang.
+\end{proof}
+
+\begin{corollary}[Leitkoeffizientenhülle der Randzählung]
+Für die rechte Randfamilie gilt
+\[
+ \frac{12R_1}{\pi^2q^2}
+ \le
+ \liminf_{\varepsilon\downarrow0}
+ \frac{\varepsilon N_\partial^+(\varepsilon)}
+ {\log(1/\varepsilon)}
+ \le
+ \limsup_{\varepsilon\downarrow0}
+ \frac{\varepsilon N_\partial^+(\varepsilon)}
+ {\log(1/\varepsilon)}
+ \le
+ \frac{12R_1}{\pi^2}.
+\]
+\end{corollary}
+
+\begin{proof}
+Für
+\[
+ F(X)=\#\{(u,v)\in\mathbb N^2:\gcd(u,v)=1,\ uv\le X\}
+\]
+gilt die klassische primitive Divisorasymptotik
+\[
+ F(X)\sim\frac6{\pi^2}X\log X.
+\]
+Der Vergleich \eqref{eq:geometric-comparison} ergibt
+\[
+ \sum_{n\ge0}F\!\left(\frac{2r_n}{q^2\varepsilon}\right)
+ \le N_\partial^+(\varepsilon)
+ \le
+ \sum_{n\ge0}F\!\left(\frac{2r_n}{\varepsilon}\right).
+\]
+Für jede feste endliche Teilsumme folgt die Behauptung aus der
+Asymptotik von $F$. Für die Restsummen gilt
+$F(X)\ll X\log(2+X)$. Nach Multiplikation mit
+$\varepsilon/\log(1/\varepsilon)$ werden sie daher durch ein
+konstantes Vielfaches von $\sum_{n>N}r_n$ kontrolliert. Zuerst
+$\varepsilon\downarrow0$ und dann $N\to\infty$ liefert die
+Behauptung.
+\end{proof}
+
+\begin{corollary}[Abel-Hülle der ersten Binnenebene]
+Für die erste Binnenebene gilt
+\[
+ \frac{3R_1}{4q^2\pi^2}
+ \le
+ \liminf_{s\downarrow1}(s-1)Z_{\mathrm{seed}}^+(s)
+ \le
+ \limsup_{s\downarrow1}(s-1)Z_{\mathrm{seed}}^+(s)
+ \le
+ \frac{R_1}{\pi^2}.
+\]
+\end{corollary}
+
+\begin{proof}
+Aus \eqref{eq:seed-comparison} folgt
+\[
+ \frac{R(s)}{(4q^2)^s}Z_{\mathrm{seed,ref}}(s)
+ \le Z_{\mathrm{seed}}^+(s)
+ \le \frac{R(s)}{3^s}Z_{\mathrm{seed,ref}}(s).
+\]
+Wegen
+\[
+ Z_{\mathrm{seed,ref}}(s)
+ =\frac{\zeta(2s-1)}{\zeta(2s)}
+ \sim\frac3{\pi^2}(s-1)^{-1}
+ \qquad(s\downarrow1)
+\]
+folgt die Behauptung.
+\end{proof}
+
+\begin{corollary}[Leitkoeffizientenhülle der Seed-Zählung]
+Für die erste Binnenebene gilt
+\[
+ \frac{3R_1}{4q^2\pi^2}
+ \le
+ \liminf_{\varepsilon\downarrow0}
+ \varepsilon N_{\mathrm{seed}}^+(\varepsilon)
+ \le
+ \limsup_{\varepsilon\downarrow0}
+ \varepsilon N_{\mathrm{seed}}^+(\varepsilon)
+ \le
+ \frac{R_1}{\pi^2}.
+\]
+\end{corollary}
+
+\begin{proof}
+Mit
+\[
+ H(X)=\#\{(u,v)\in\mathbb N^2:\gcd(u,v)=1,\ u+v\le X\}
+ =\sum_{m\le X}\varphi(m)
+\]
+gilt
+\[
+ H(X)\sim\frac3{\pi^2}X^2.
+\]
+Aus \eqref{eq:seed-comparison} folgt
+\[
+ \sum_{n\ge0}
+ H\!\left(\sqrt{\frac{r_n}{4q^2\varepsilon}}\right)
+ \le N_{\mathrm{seed}}^+(\varepsilon)
+ \le
+ \sum_{n\ge0}
+ H\!\left(\sqrt{\frac{r_n}{3\varepsilon}}\right).
+\]
+Die feste Kopf--Schwanz-Zerlegung wie im Randfall und die Summierbarkeit
+von $\sum_nr_n$ liefern die Behauptung.
+\end{proof}
+
 \section{Zählung der vollständigen Packung}
 
 Die vollständige Halbkreispackung ist keine einzelne Apollonische Bahn. Sie

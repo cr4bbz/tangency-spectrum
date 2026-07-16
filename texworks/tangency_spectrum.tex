@@ -1912,6 +1912,78 @@ Für $s>1/2$ sind die Gewichte auf $Y$ gleichmäßig summierbar, denn
  g_m(x)\ll_s (m+1)^{-2s}.
 \]
 
+\begin{proposition}[Uniforme Verzerrung und induzierte Resolvente]
+Sei $\omega=(m_1,\ldots,m_n)$ ein endliches Wort in den induzierten
+Zweigen und
+\[
+ G_\omega=G_{m_n}\circ\cdots\circ G_{m_1}.
+\]
+Dann gilt
+\[
+ \sup_{x,y\in Y}
+ \frac{|G_\omega'(x)|}{|G_\omega'(y)|}\le4.
+\]
+Ferner gilt für jedes $s>1$
+\[
+ \|\mathcal G_s^n\|_{C(Y)\to C(Y)}
+ \le
+ 4^s\left(\frac49\right)^{n(s-1)}.
+\]
+Insbesondere konvergiert
+\[
+ \sum_{n\ge0}\mathcal G_s^n
+]
+in der Operatornorm auf $C(Y)$.
+\end{proposition}
+
+\begin{proof}
+Jede Komposition $G_\omega$ ist eine Möbius-Abbildung mit nichtnegativen
+Koeffizienten. Ihre Ableitung hat daher die Form
+\[
+ |G_\omega'(x)|=\frac{c}{(ax+b)^2}
+ \qquad(a,b,c\ge0).
+\]
+Für $x,y\in[1/2,1]$ folgt
+\[
+ \frac{ax+b}{ay+b}\le2,
+\]
+woraus die Verzerrungsschranke folgt.
+
+Die Intervalle
+\[
+ G_m(Y)=
+ \left[
+ \frac{m+1}{m+2},
+ \frac{m+2}{m+3}
+ \right]
+]
+zerlegen $Y$ bis auf Endpunkte. Iteration zeigt, dass auch die
+Zylinderintervalle $G_\omega(Y)$ einer festen Tiefe $n$ paarweise
+disjunkt sind und zusammen $Y$ überdecken. Setze
+\[
+ H_n(x)=(\mathcal G_s^n\mathbf 1)(x)
+ =\sum_{|\omega|=n}|G_\omega'(x)|^s.
+\]
+Da jede einzelne Ableitung höchstens $4/9$ beträgt, gilt
+\[
+ \int_YH_n(x)\,dx
+ \le
+ \left(\frac49\right)^{n(s-1)}
+ \sum_{|\omega|=n}\int_Y|G_\omega'(x)|\,dx
+ =
+ \frac12\left(\frac49\right)^{n(s-1)}.
+\]
+Die Verzerrungsschranke überträgt diese mittlere Schranke auf jede Stelle
+von $Y$ und liefert
+\[
+ \|H_n\|_\infty
+ \le4^s\left(\frac49\right)^{n(s-1)}.
+\]
+Für $f\in C(Y)$ folgt
+$|\mathcal G_s^nf|\le\|f\|_\infty H_n$, was die
+Operatorabschätzung und die Resolventenaussage beweist.
+\end{proof}
+
 \begin{remark}[Defekter induzierter Bereich]
 Für die induzierten Rückkehrgewichte auf $Y$ setze
 \[

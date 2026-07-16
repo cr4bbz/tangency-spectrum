@@ -2171,6 +2171,83 @@ der einzelnen Rückkehroperatoren verbinden. Dieser Schritt soll die
 Schranke $A_j(s)\ll_s j^{-2s}$ im gesamten Bereich $s>1$ liefern.
 \end{remark}
 
+\subsection{Zweiparametrige Tiefenzeta}
+
+Die Tiefenvariable kann unabhängig von der geometrischen Gewichtung
+markiert werden. Für $\operatorname{Re}s>1$ und $|z|<1$ setzen wir
+\[
+ \mathscr D(s,z)
+ =
+ \sum_{k\ge0}z^k\mathcal Z_k^{\mathrm{ref}}(s)
+ =
+ \sum_{w\in\{L,R\}^*}
+ z^{|w|}\left(\frac{2}{u_wv_w}\right)^s.
+\]
+Die Reihe konvergiert absolut und definiert eine in beiden Variablen
+holomorphe Funktion. Bei $z=1$ erhält man die vollständige
+Referenzzeta zurück:
+\[
+ \mathscr D(s,1)
+ =
+ 2^s\frac{\zeta(s)^2}{\zeta(2s)}.
+\]
+
+Die Quotientendynamik liefert zudem eine Transferdarstellung. Mit
+\[
+ \psi_s(x)=x^{-s},
+ \qquad
+ (\mathcal L_sf)(x)
+ =(1+x)^{-2s}
+ \left(
+ f\!\left(\frac{x}{1+x}\right)
+ +f\!\left(\frac1{1+x}\right)
+ \right)
+\]
+gilt, zunächst als absolut konvergente Neumannreihe,
+\[
+ \mathscr D(s,z)
+ =
+ 2^s\sum_{k\ge0}z^k
+ (\mathcal L_s^k\psi_s)(1).
+\]
+Damit ist die Tiefenmarkierung $z$ ein spektraler Parameter der
+Stern--Brocot-Dynamik.
+
+\begin{proposition}[Abelsche Tiefensingularität]
+Für reelles $1<s<2$ gilt beim Grenzübergang $z\uparrow1$
+\[
+ \mathscr D(s,z)-\mathscr D(s,1)
+ \sim
+ C_s\Gamma(1-s)(1-z)^{s-1},
+\]
+wobei
+\[
+ C_s=
+ 2^{s+1}\frac{\zeta(2s-1)}{\zeta(2s)}.
+\]
+Für $s=2$ ersetzt der führende Term sich durch
+\[
+ \mathscr D(2,z)-\mathscr D(2,1)
+ \sim
+ C_2(1-z)\log(1-z).
+\]
+\end{proposition}
+
+\begin{proof}
+Die bewiesene Ebenenasymptotik
+$\mathcal Z_k^{\mathrm{ref}}(s)\sim C_sk^{-s}$ und der
+abelsche Satz für Potenzreihen regulär variierender Koeffizienten liefern
+die Aussage. Der Modellterm ist $C_s\operatorname{Li}_s(z)$.
+\end{proof}
+
+\begin{remark}[Trennung von Tiefe und Arithmetik]
+Die nichtanalytische Struktur in der Variablen $z$ bei $z=1$ wird von den
+parabolischen Rückkehrzeiten erzeugt. Die arithmetische Struktur in der
+Variablen $s$ ist dagegen bereits auf der Schnittebene $z=1$ durch
+$\zeta(s)^2/\zeta(2s)$ sichtbar. Diese Trennung ist der Ausgangspunkt
+für eine spätere Resonanzanalyse.
+\end{remark}
+
 \section{Offene Fragen}
 
 \begin{enumerate}[leftmargin=*,label=\arabic*.]

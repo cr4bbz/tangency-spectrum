@@ -1984,6 +1984,46 @@ $|\mathcal G_s^nf|\le\|f\|_\infty H_n$, was die
 Operatorabschätzung und die Resolventenaussage beweist.
 \end{proof}
 
+\begin{proposition}[Rang-eins-Schwanz der Rückkehroperatoren]
+Für $m\ge0$ definiere auf $C^1(Y)$ den Rückkehroperator
+\[
+ (R_mf)(x)
+ =
+ \bigl(1+(m+1)x\bigr)^{-2s}f(G_m(x))
+]
+und den Rang-eins-Operator
+\[
+ (\Pi_sf)(x)=x^{-2s}f(1).
+\]
+Dann gilt für jedes $s>1$
+\[
+ \left\|m^{2s}R_m-\Pi_s\right\|_{C^1(Y)\to C(Y)}
+ \ll_s\frac1m
+ \qquad(m\to\infty).
+\]
+\end{proposition}
+
+\begin{proof}
+Für $x\in Y$ gilt gleichmäßig
+\[
+ m^{2s}\bigl(1+(m+1)x\bigr)^{-2s}
+ =
+ x^{-2s}\left(1+O_s\!\left(\frac1m\right)\right).
+\]
+Ferner ist
+\[
+ 1-G_m(x)
+ =
+ \frac{x}{1+(m+1)x}
+ =O\!\left(\frac1m\right).
+\]
+Daher folgt für $f\in C^1(Y)$
+\[
+ f(G_m(x))=f(1)+O\!\left(\frac{\|f'\|_\infty}{m}\right).
+\]
+Multiplikation der beiden Abschätzungen liefert die Behauptung.
+\end{proof}
+
 \begin{remark}[Defekter induzierter Bereich]
 Für die induzierten Rückkehrgewichte auf $Y$ setze
 \[

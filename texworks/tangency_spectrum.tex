@@ -2248,6 +2248,80 @@ $\zeta(s)^2/\zeta(2s)$ sichtbar. Diese Trennung ist der Ausgangspunkt
 für eine spätere Resonanzanalyse.
 \end{remark}
 
+\subsection{Parabolische Regularisierung und Resonanzprogramm}
+
+Für komplexes $s$ und $|z|<1 betrachten wir die induzierte
+operatorwertige Tiefenreihe
+\[
+ \mathcal G(s,z)
+ =\sum_{m\ge0}z^{m+1}R_m(s).
+\]
+Die Rang-eins-Asymptotik der Rückkehroperatoren erlaubt eine kanonische
+Abspaltung des parabolischen Teils. Für $m\ge1$ schreibe
+\[
+ R_m(s)=m^{-2s}\Pi_s+E_m(s).
+\]
+Dann gilt auf jedem kompakten Teilgebiet von $\operatorname{Re}s>0$
+\[
+ \|E_m(s)\|_{C^1\to C^1}
+ \ll m^{-2\operatorname{Re}s-1}.
+\]
+Folglich besitzt
+\[
+ \mathcal E(s,z)
+ =
+ zR_0(s)+z\sum_{m\ge1}z^mE_m(s)
+\]
+eine bis $|z|=1$ stetige operatorwertige Fortsetzung für
+$\operatorname{Re}s>0$, und
+\begin{equation}\label{eq:polylog-regularization}
+ \mathcal G(s,z)
+ =
+ z\operatorname{Li}_{2s}(z)\Pi_s+\mathcal E(s,z).
+\end{equation}
+
+\begin{proof}
+Die Abschätzung für $E_m(s)$ ist die komplexe, auf kompakten Mengen
+gleichmäßige Form der Rang-eins-Schwanzabschätzung. Da die Restreihe wie
+$\sum_mm^{-2\operatorname{Re}s-1}$ majorisiert wird, konvergiert sie
+in Operatornorm. Die Hauptreihe ist per Definition der Polylogarithmus.
+\end{proof}
+
+\begin{remark}[Drei getrennte Singularitätsmechanismen]
+Formel \eqref{eq:polylog-regularization} trennt drei mögliche Quellen
+nichtanalytischen Verhaltens:
+\[
+ \begin{array}{rcl}
+ z=1
+ &:&
+ \operatorname{Li}_{2s}(z)
+ \quad\text{(parabolische Rückkehrzeiten)},\\[2mm]
+ I-\mathcal G(s,z)
+ &:&
+ \text{Nichtinvertierbarkeit der induzierten Resolvente
+ (dynamische Resonanzen)},\\[2mm]
+ z=1
+ &:&
+ \displaystyle
+ \mathscr D(s,1)=2^s\frac{\zeta(s)^2}{\zeta(2s)}
+ \quad\text{(arithmetische Singularitäten).}
+ \end{array}
+\]
+Die dritte Zeile ist im Referenzmodell exakt. Insbesondere können
+Nullstellen $\rho$ von $\zeta$ über den Nenner bei
+$s=\rho/2$ zu Singularitäten der meromorphen Fortsetzung führen,
+sofern keine Kürzung eintritt. Die erste und zweite Zeile stammen
+dagegen aus der parabolischen Dynamik selbst.
+\end{remark}
+
+\paragraph{Nächster Resonanzsatz.}
+Der nächste analytische Schritt besteht darin, einen geeigneten
+Funktionsraum zu wählen, auf dem die Regularisierung
+\eqref{eq:polylog-regularization} die Nichtinvertierbarkeit von
+$I-\mathcal G(s,z)$ diskret erfasst. Erst dann kann die Lage dynamischer
+Resonanzen mit den arithmetischen Singularitäten von
+$\zeta(2s)^{-1}$ sinnvoll verglichen werden.
+
 \section{Offene Fragen}
 
 \begin{enumerate}[leftmargin=*,label=\arabic*.]

@@ -1622,7 +1622,7 @@ Die Wörter in $\mathcal W_{k,2}$ sind genau
  L^rR^jL^m
  \quad\text{und}\quad
  R^rL^jR^m,
- \qquad r,j,m\ge1,qquad r+j+m=k.
+ \qquad r,j,m\ge1,\qquad r+j+m=k.
 \]
 Nach $L^rR^j$ lautet das Parameterpaar
 \[
@@ -1905,7 +1905,7 @@ Damit lautet der induzierte Operator
 \[
  (\mathcal G_sf)(x)
  =\sum_{m\ge0}g_m(x)f(G_m(x)),
- qquad x\in Y.
+ \qquad x\in Y.
 \]
 Für $s>1/2$ sind die Gewichte auf $Y$ gleichmäßig summierbar, denn
 \[
@@ -1932,7 +1932,7 @@ Ferner gilt für jedes $s>1$
 Insbesondere konvergiert
 \[
  \sum_{n\ge0}\mathcal G_s^n
-]
+\]
 in der Operatornorm auf $C(Y)$.
 \end{proposition}
 
@@ -1956,7 +1956,7 @@ Die Intervalle
  \frac{m+1}{m+2},
  \frac{m+2}{m+3}
  \right]
-]
+\]
 zerlegen $Y$ bis auf Endpunkte. Iteration zeigt, dass auch die
 Zylinderintervalle $G_\omega(Y)$ einer festen Tiefe $n$ paarweise
 disjunkt sind und zusammen $Y$ überdecken. Setze
@@ -1990,7 +1990,7 @@ Für $m\ge0$ definiere auf $C^1(Y)$ den Rückkehroperator
  (R_mf)(x)
  =
  \bigl(1+(m+1)x\bigr)^{-2s}f(G_m(x))
-]
+\]
 und den Rang-eins-Operator
 \[
  (\Pi_sf)(x)=x^{-2s}f(1).
@@ -2380,15 +2380,18 @@ Für reelles $\sigma>1$ liefert die zuvor bewiesene Resolvente
  \left(\frac49\right)^{n(\sigma-1)}.
 \]
 Für komplexes $s$ mit $\operatorname{Re}s=\sigma$ und $|z|\le1$
-gilt punktweise
+gilt auf dem reellen Intervall $Y$ punktweise
 \[
  |\mathcal G(s,z)^nf|
  \le\mathcal G(\sigma,1)^n|f|.
 \]
-Also ist $I-\mathcal G(s,z)$ in der Halbebene
-$\operatorname{Re}s>1$ invertierbar. Der analytische
-Fredholm-Satz liefert die meromorphe Fortsetzung und die Diskretheit
-der verbleibenden Nichtinvertibilitäten.
+Liegt $f\in\mathcal A(\Omega)$ im Kern von
+$I-\mathcal G(s,z)$, so folgt durch Iteration $f|_Y=0$, also wegen
+der Holomorphie $f=0$. Da $I-\mathcal G(s,z)$ ein Fredholmoperator
+vom Index $0$ ist, ist er in der Halbebene
+$\operatorname{Re}s>1$ invertierbar. Der analytische Fredholm-Satz
+liefert die meromorphe Fortsetzung und die Diskretheit der verbleibenden
+Nichtinvertibilitäten.
 \end{proof}
 
 \begin{remark}[Dynamische Resonanzen]
@@ -2398,6 +2401,90 @@ $I-\mathcal G(s,z)$ nicht invertierbar ist, die dynamischen
 Resonanzen der induzierten Tangenzdynamik. Sie sind von den
 arithmetischen Singularitäten der expliziten Schnittebene $z=1$
 zunächst unabhängig definiert.
+\end{remark}
+
+
+\subsection{Resolventendarstellung der Tiefenzeta}
+
+Die Fredholmfamilie erfasst die volle zweiparametrige Tiefenzeta, sobald
+auch der letzte, nicht zur Rückkehr abgeschlossene parabolische Lauf
+mitgeführt wird. Dazu setze
+\[
+ \eta(s,z;x)
+ =
+ \sum_{n\ge0}z^n x^{-s}(1+nx)^{-s}.
+\]
+Für $|z|<1$ konvergiert diese Reihe lokal gleichmäßig in $s$ als
+$\mathcal A(\Omega)$-wertige Reihe. Sie ist somit eine ganze
+$\mathcal A(\Omega)$-wertige Funktion von $s$.
+
+\begin{proposition}[Exakte induzierte Resolventendarstellung]
+Für $\operatorname{Re}s>1$ und $|z|<1$ gilt
+\begin{equation}\label{eq:induced-depth-resolvent}
+ \mathscr D(s,z)
+ =
+ 2^s\,
+ \bigl[(I-\mathcal G(s,z))^{-1}\eta(s,z;\,\cdot)\bigr](1).
+\end{equation}
+Folglich besitzt $\mathscr D(s,z)$ für jedes feste $|z|<1$ eine
+meromorphe Fortsetzung in die Halbebene
+\[
+ \operatorname{Re}s>\frac12.
+\]
+Ihre möglichen Pole liegen unter den dynamischen Resonanzen, das heißt
+unter den Nichtinvertibilitäten von $I-\mathcal G(s,z)$.
+\end{proposition}
+
+\begin{proof}
+Jede endliche Quotientenbahn, die bei $x=1\in Y$ beginnt, besitzt
+eindeutig die Form
+\[
+ (T_0^{m_1}T_1)\cdots(T_0^{m_r}T_1)\,T_0^n,
+ \qquad m_1,\ldots,m_r,n\ge0.
+\]
+Der $j$-te Rückkehrblock trägt genau die Länge $m_j+1$ und wird durch
+$R_{m_j}(s)$ erfasst. Für den abschließenden Lauf gilt
+\[
+ T_0^n(x)=\frac{x}{1+nx},
+ \qquad
+ \prod_{\ell=0}^{n-1}
+  \bigl(1+T_0^\ell(x)\bigr)^{-2s}
+ \,\psi_s(T_0^n x)
+ =
+ x^{-s}(1+nx)^{-s}.
+\]
+Die Markierung der Gesamtlänge liefert daher nach Summation über die
+Rückkehrblöcke und den terminalen Lauf
+\[
+ \frac{\mathscr D(s,z)}{2^s}
+ =
+ \sum_{r\ge0}\mathcal G(s,z)^r\eta(s,z;\,\cdot)(1).
+\]
+Im anfänglichen Bereich $\operatorname{Re}s>1$ ist die ursprüngliche
+Wortreihe absolut konvergent. Die Zerlegung darf daher nach Zahl und
+Längen der Rückkehrblöcke umgeordnet werden. Ihre Summe löst
+\[
+ (I-\mathcal G(s,z))F=\eta(s,z;\,\cdot).
+\]
+Wegen der dortigen Invertierbarkeit von $I-\mathcal G(s,z)$ ist
+$F=(I-\mathcal G(s,z))^{-1}\eta(s,z;\,\cdot)$, und
+\eqref{eq:induced-depth-resolvent} folgt. Die Fredholmfortsetzung der
+Resolvente aus der vorangehenden Proposition und die Ganzeigenschaft
+von $\eta$ liefern die meromorphe Fortsetzung. Pole können nur dort
+entstehen, wo die Resolvente einen Pol besitzt; sie können im Einzelfall
+durch die terminale Beobachtung weggekürzt werden.
+\end{proof}
+
+\begin{remark}[Präzise Trennung der Mechanismen]
+Für $|z|<1$ ist die terminale Funktion $\eta(s,z;\,\cdot)$ ganz in
+$s$. In diesem offenen Tiefenbereich entstehen Singularitäten der
+Fortsetzung daher ausschließlich dynamisch. Die arithmetische
+Singularitätsstruktur
+\[
+ \mathscr D(s,1)=2^s\frac{\zeta(s)^2}{\zeta(2s)}
+\]
+tritt erst an der Randebene $z=1$ hinzu. Dies ist eine strikte
+Trennung, keine bloße Analogie.
 \end{remark}
 
 \section{Offene Fragen}

@@ -1935,6 +1935,72 @@ dieses Erneuerungslemma mit dem terminalen parabolischen Rest zu
 formalisieren.
 \end{remark}
 
+\begin{proposition}[Defekte Erneuerungsmajorante]
+Für $s\ge3/2$ gilt
+\[
+ B_k(s)\ll_s(k+1)^{-2s}
+ \qquad(k\ge1).
+\]
+Folglich erfüllt die einseitige Kernmasse
+\[
+ A_k(s)\ll_s(k+1)^{-2s}.
+\]
+\end{proposition}
+
+\begin{proof}
+Setze
+\[
+ h_n=\left(\frac{2}{n+2}\right)^{2s}
+ \quad(n\ge1),
+ \qquad
+ t_n=\left(\frac{2}{n+2}\right)^{2s}
+ \quad(n\ge0).
+\]
+Dann ist $t=\delta_0+h$ und
+\[
+ \sum_{n\ge1}h_n=q_s<1.
+\]
+Jede Quotientenbahn zerfällt eindeutig in Rückkehrblöcke
+$T_0^{m}T_1$ der Länge $m+1$ und einen terminalen Block $T_0^n$.
+Die Gewichte dieser Blöcke werden jeweils durch $h_{m+1}$ beziehungsweise
+$t_n$ majorisiert. Daher ist
+\[
+ B_k(s)
+ \le
+ \left(\sum_{\ell\ge0}h^{*\ell}*t\right)_k
+ =
+ \left(\delta_0+2\sum_{\ell\ge1}h^{*\ell}\right)_k.
+\]
+
+Wir verwenden nun die klassische Kesten-Abschätzung für regulär
+variierende diskrete Gewichte: Ist $h_n\asymp n^{-p}$ mit $p>1$ und
+$\sum_nh_n<1$, dann gilt
+\[
+ \sum_{\ell\ge1}h^{*\ell}_k\ll h_k.
+\]
+Sie folgt durch Normierung von $h$ zu einer subexponentiellen
+Wahrscheinlichkeitsfolge und die Kesten-Schranke
+$\bar h^{*\ell}_k\ll_\varepsilon
+(1+\varepsilon)^\ell\bar h_k$, wobei
+$\varepsilon>0$ so klein gewählt wird, dass
+$(1+\varepsilon)q_s<1$. Mit $p=2s$ folgt
+$B_k(s)\ll_s h_k\asymp(k+1)^{-2s}$. Die Aussage für $A_k$ folgt aus
+$B_k=2A_k$.
+\end{proof}
+
+\begin{corollary}[Scharfe Ebenenasymptotik im defekten Bereich]
+Für jedes $s\ge3/2$ gilt
+\[
+ \mathcal Z_k^{\mathrm{ref}}(s)
+ \sim
+ 2^{s+1}\frac{\zeta(2s-1)}{\zeta(2s)}\,k^{-s}.
+\]
+\end{corollary}
+
+\begin{proof}
+Die vorangehende Proposition erfüllt das ausreichende Kernkriterium.
+\end{proof}
+
 \begin{remark}[Konkreter verbleibender Analyseschritt]
 Die induzierten Rückkehrblöcke tragen genau die erwartete parabolische
 Schwanzordnung $m^{-2s}$. Um

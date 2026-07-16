@@ -1831,6 +1831,97 @@ Koordinate vor dem terminalen Lauf. Diese einseitige Form ist der
 natürliche Ansatzpunkt für eine induzierte parabolische Erneuerung.
 
 
+\subsubsection{Induzierter parabolischer Transferoperator}
+
+Die Kernmasse besitzt eine dynamische Darstellung, die die parabolischen
+Läufe exakt aussondert. Für ein Stern--Brocot-Paar $(u,v)$ setze
+\[
+ a=\max(u,v),\qquad x=\frac{\min(u,v)}{\max(u,v)}\in(0,1].
+\]
+Nach jedem Schritt normieren wir wieder so, dass die größere Komponente
+an erster Stelle steht. Die beiden möglichen Quotientenabbildungen sind
+\[
+ T_0(x)=\frac{x}{1+x},
+ \qquad
+ T_1(x)=\frac{1}{1+x};
+\]
+in beiden Fällen wird die größere Komponente mit $1+x$ multipliziert.
+
+\begin{proposition}[Transferdarstellung der Kernmasse]
+Definiere
+\[
+ B_k(s)=\sum_{|w|=k}\max(u_w,v_w)^{-2s}.
+\]
+Dann gilt für $k\ge1$
+\[
+ B_k(s)=2A_k(s).
+\]
+Mit dem gewichteten Transferoperator
+\[
+ (\mathcal L_sf)(x)
+ =(1+x)^{-2s}
+ \left(
+ f\!\left(\frac{x}{1+x}\right)
+ +f\!\left(\frac{1}{1+x}\right)
+ \right)
+\]
+gilt ferner
+\[
+ B_k(s)=(\mathcal L_s^k\mathbf 1)(1).
+\]
+\end{proposition}
+
+\begin{proof}
+Aus einem normierten Paar $(a,b)$ mit $b=ax$ entstehen, nach erneuter
+Normierung, die Paare
+\[
+ (a+b,b)
+ \quad\text{und}\quad
+ (a+b,a).
+\]
+Beide haben die größere Komponente $a(1+x)$ und die angegebenen
+Quotienten. Die Iteration liefert die Transferdarstellung. Die Spiegelung
+vertauscht die Wörter mit terminalem $L$ und terminalem $R$, ohne die
+größere Komponente zu ändern; daher ist $B_k=2A_k$ für $k\ge1$.
+\end{proof}
+
+Die parabolische Verzweigung $T_0$ ist exakt integrierbar:
+\[
+ T_0^m(x)=\frac{x}{1+mx},
+ \qquad
+ \prod_{\ell=0}^{m-1}
+ \bigl(1+T_0^\ell(x)\bigr)^{-2s}
+ =(1+mx)^{-2s}.
+\]
+Induziert man auf dem zentralen Intervall
+$Y=[1/2,1]$, so besitzt ein Rückkehrblock
+$T_0^mT_1$ die Abbildung und das Gewicht
+\[
+ G_m(x)=\frac{1+mx}{1+(m+1)x},
+ \qquad
+ g_m(x)=\bigl(1+(m+1)x\bigr)^{-2s}.
+\]
+Damit lautet der induzierte Operator
+\[
+ (\mathcal G_sf)(x)
+ =\sum_{m\ge0}g_m(x)f(G_m(x)),
+ qquad x\in Y.
+\]
+Für $s>1/2$ sind die Gewichte auf $Y$ gleichmäßig summierbar, denn
+\[
+ g_m(x)\ll_s (m+1)^{-2s}.
+\]
+
+\begin{remark}[Konkreter verbleibender Analyseschritt]
+Die induzierten Rückkehrblöcke tragen genau die erwartete parabolische
+Schwanzordnung $m^{-2s}$. Um
+$A_j(s)\ll_s j^{-2s}$ zu beweisen, genügt es nun, die Rückkehrzerlegung
+mit einer gleichmäßigen Kontrolle der zwischenzeitlichen zentralen
+Dynamik zu kombinieren. Der offene Schritt ist damit eine gewichtete
+Erneuerungsabschätzung für $\mathcal G_s$, nicht mehr eine unstrukturierte
+Summe über alle Stern--Brocot-Wörter.
+\end{remark}
+
 \section{Offene Fragen}
 
 \begin{enumerate}[leftmargin=*,label=\arabic*.]

@@ -1593,6 +1593,98 @@ Zuerst für endliche Teilmengen den Grenzwert zu bilden und dann zu
 erschöpfen beweist die Behauptung.
 \end{proof}
 
+\subsubsection{Die Zwei-Wechsel-Familie}
+
+Sei $\mathcal W_{k,2}$ die Menge der Wörter der Länge $k$ mit genau
+zwei Symbolwechseln und setze
+\[
+ \mathcal Z_{k,2}^{\mathrm{ref}}(s)
+ =\sum_{w\in\mathcal W_{k,2}}
+ \left(\frac{2}{u_wv_w}\right)^s.
+\]
+Diese erste nichttriviale Wechselklasse bestätigt die parabolische
+Kandidatenkonstante bereits exakt.
+
+\begin{proposition}[Zwei-Wechsel-Beitrag]
+Für jedes $s>1$ gilt
+\[
+ \lim_{k\to\infty}
+ k^s\mathcal Z_{k,2}^{\mathrm{ref}}(s)
+ =
+ 2^{s+1}\sum_{r,j\ge1}
+ \frac{1}{\bigl(1+j(r+1)\bigr)^{2s}}.
+\]
+\end{proposition}
+
+\begin{proof}
+Die Wörter in $\mathcal W_{k,2}$ sind genau
+\[
+ L^rR^jL^m
+ \quad\text{und}\quad
+ R^rL^jR^m,
+ \qquad r,j,m\ge1,qquad r+j+m=k.
+\]
+Nach $L^rR^j$ lautet das Parameterpaar
+\[
+ (a,b)=\bigl(1+j(r+1),\,r+1\bigr).
+\]
+Der letzte $L$-Lauf liefert daher die Länge
+\[
+ \frac{2}{a(b+ma)}.
+\]
+Die spiegelbildliche Familie hat dieselbe Länge. Also ist
+\[
+ k^s\mathcal Z_{k,2}^{\mathrm{ref}}(s)
+ =
+ 2^{s+1}
+ \sum_{\substack{r,j,m\ge1\\r+j+m=k}}
+ \left(\frac{k}{a(b+ma)}\right)^s.
+\]
+
+Zunächst beschränken wir die Summe auf $m\ge k/2$. Dann gilt
+\[
+ \frac{k}{a(b+ma)}
+ \le\frac{k}{ma^2}
+ \le\frac{2}{a^2}.
+\]
+Die rechte Seite ist über $r,j$ summierbar, denn
+$a=1+j(r+1)\ge j(r+1)$ und
+\[
+ \sum_{r,j\ge1}a^{-2s}<\infty.
+\]
+Für festes $r,j$ konvergiert der Summand gegen $a^{-2s}$.
+Dominierte Konvergenz liefert somit den angegebenen Grenzwert für
+den Bereich $m\ge k/2$.
+
+Im Restbereich $m<k/2$ gilt mit $r+j=k-m>k/2$
+\[
+ a=1+j(r+1)\ge r+j+1>\frac{k}{2}.
+\]
+Folglich ist
+\[
+ \sum_{\substack{r,j\ge1\\r+j=k-m}}a^{-2s}
+ \le k\left(\frac{2}{k}\right)^{2s}.
+\]
+Der gesamte Rest ist daher durch
+\[
+ 2^{3s+1}k^{1-s}
+ \sum_{m<k/2}m^{-s}
+\]
+beschränkt und verschwindet für $k\to\infty$, weil $s>1$.
+\end{proof}
+
+\begin{remark}
+Die zwei Wechsel erzwingen die Kongruenzform
+\[
+ a=1+jb,\qquad b=r+1\ge2.
+\]
+Damit erscheint nur eine spezielle Teilmenge der teilerfremden Paare.
+Bei beliebig vielen Wechseln entstehen dagegen alle Paare
+$(a,b)$ mit $1\le b<a$ und $\gcd(a,b)=1$; ihre Anzahl für festes
+$a$ ist $\varphi(a)$. Die Proposition macht somit sichtbar, wie die
+volle Totientenkonstante schrittweise aus den Wechselklassen entsteht.
+\end{remark}
+
 \begin{conjecture}[Scharfe parabolische Ebenenasymptotik]
 Für jedes $s>1$ gilt im Referenzmodell
 \[

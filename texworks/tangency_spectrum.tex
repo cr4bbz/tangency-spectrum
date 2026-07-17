@@ -2475,6 +2475,152 @@ entstehen, wo die Resolvente einen Pol besitzt; sie können im Einzelfall
 durch die terminale Beobachtung weggekürzt werden.
 \end{proof}
 
+
+\subsection{Terminale parabolische Regularisierung}
+
+Auch der terminale Lauf besitzt eine kanonische Polylogarithmus-
+Abspaltung. Für $n\ge1$ schreiben wir
+\[
+ x^{-s}(1+nx)^{-s}
+ =
+ x^{-2s}n^{-s}
+ +
+ x^{-2s}n^{-s}
+ \left[
+ \left(1+\frac1{nx}\right)^{-s}-1
+ \right].
+\]
+Daher gilt die exakte Zerlegung
+\begin{equation}\label{eq:terminal-polylog-regularization}
+ \eta(s,z;x)
+ =
+ x^{-2s}\operatorname{Li}_s(z)+\mathcal H(s,z;x),
+\end{equation}
+wobei
+\[
+ \mathcal H(s,z;x)
+ =
+ x^{-s}
+ +
+ x^{-2s}\sum_{n\ge1}z^n n^{-s}
+ \left[
+ \left(1+\frac1{nx}\right)^{-s}-1
+ \right].
+\]
+
+\begin{proposition}[Regulärer terminaler Rest]
+Die Funktion $\mathcal H(s,z;\,\cdot)$ ist für
+$\operatorname{Re}s>0$ holomorph in $s$, holomorph in $z$ für
+$|z|<1$ und setzt sich als $\mathcal A(\Omega)$-wertige Funktion
+stetig nach $|z|\le1$ fort. Für reelles $1<s<2$ gilt in der
+$\mathcal A(\Omega)$-Norm
+\[
+ \eta(s,z;\,\cdot)-\eta(s,1;\,\cdot)
+ \sim
+ \Gamma(1-s)(1-z)^{s-1}\,(\,\cdot\,)^{-2s}
+ \qquad(z\uparrow1).
+\]
+Bei $s=2$ lautet der führende nichtanalytische Term
+\[
+ (1-z)\log(1-z)\,(\,\cdot\,)^{-4}.
+\]
+\end{proposition}
+
+\begin{proof}
+Auf $\overline\Omega$ ist $x$ gleichmäßig von $0$ getrennt. Für $s$
+in einer kompakten Teilmenge von $\operatorname{Re}s>0$ gilt daher
+gleichmäßig in $x$
+\[
+ n^{-s}
+ \left[
+ \left(1+\frac1{nx}\right)^{-s}-1
+ \right]
+ =
+ O\!\left(n^{-\operatorname{Re}s-1}\right).
+\]
+Die Reihe für $\mathcal H$ konvergiert folglich bis $|z|=1$ in der
+Norm von $\mathcal A(\Omega)$. Die behaupteten Regularitätseigenschaften
+folgen aus der lokal gleichmäßigen Konvergenz. Für $s>1$ ist der Rest
+sogar einmal stetig nach $z$ differenzierbar am Punkt $z=1$. Die
+nichtanalytischen Leitterme stammen deshalb allein von
+$\operatorname{Li}_s(z)$ in \eqref{eq:terminal-polylog-regularization};
+die bekannten Polylogarithmus-Asymptotiken liefern die Aussagen.
+\end{proof}
+
+\begin{corollary}[Der terminale Pol bei $s=1$]
+Auf der Randebene $z=1$ gilt zunächst für $\operatorname{Re}s>1$,
+und danach meromorph in $s$,
+\[
+ \eta(s,1;x)
+ =
+ x^{-2s}\zeta\!\left(s,\frac1x\right),
+\]
+wobei rechts die Hurwitz-Zeta-Funktion steht. Insbesondere besitzt
+der terminale Anteil bei $s=1$ einen einfachen Pol mit Residuum
+\[
+ \operatorname*{Res}_{s=1}\eta(s,1;x)=x^{-2}.
+\]
+\end{corollary}
+
+\begin{proof}
+Aus $1+nx=x(n+x^{-1})$ folgt
+\[
+ \eta(s,1;x)
+ =
+ x^{-2s}\sum_{n\ge0}\left(n+\frac1x\right)^{-s}.
+\]
+Die Aussage folgt aus der Standardfortsetzung der Hurwitz-Zeta-Funktion.
+\end{proof}
+
+\begin{proposition}[Explizite Randresonanz]
+Am Punkt $(s,z)=(1,1)$ gilt
+\[
+ \mathcal G(1,1)\,h=h,
+ \qquad h(x)=x^{-1}.
+\]
+Insbesondere ist $s=1$ auf der Randebene $z=1$ tatsächlich eine
+dynamische Resonanz.
+\end{proposition}
+
+\begin{proof}
+Da $|G_m'(x)|=(1+(m+1)x)^{-2}$, erhält man
+\[
+ \begin{aligned}
+ (\mathcal G(1,1)h)(x)
+ &=
+ \sum_{m\ge0}
+ \frac{1}{(1+(m+1)x)^2}\,
+ \frac{1+(m+1)x}{1+mx}\\
+ &=
+ \sum_{m\ge0}
+ \frac1{(1+mx)(1+(m+1)x)}\\
+ &=
+ \frac1x\sum_{m\ge0}
+ \left(
+ \frac1{1+mx}-\frac1{1+(m+1)x}
+ \right)
+ =\frac1x.
+ \end{aligned}
+\]
+\end{proof}
+
+\begin{remark}[Kollision am Rand]
+Im offenen Bereich $|z|<1$ sind terminale und dynamische
+Singularitäten getrennt. Auf $z=1$ treffen sie bei $s=1$ zusammen:
+Der terminale Anteil hat dort einen einfachen Hurwitz-Zeta-Pol, und
+zugleich besitzt die induzierte Dynamik die Eigenfunktion $x^{-1}$ zum
+Eigenwert $1$. Die exakte Identität
+\[
+ \mathscr D(s,1)=2^s\frac{\zeta(s)^2}{\zeta(2s)}
+ \sim\frac{12}{\pi^2}(s-1)^{-2}
+\]
+zeigt, dass die vollständige Referenzzeta dort einen Doppelpol hat.
+Aus der Resolventendarstellung allein folgt die Doppelpolordnung erst,
+wenn die Einfachheit dieser Resonanz und die Nichtverschwindung ihrer
+Kopplung an die terminale Beobachtung bewiesen sind. Genau das ist der
+nächste, nun präzise formulierte Resonanzschritt.
+\end{remark}
+
 \begin{remark}[Präzise Trennung der Mechanismen]
 Für $|z|<1$ ist die terminale Funktion $\eta(s,z;\,\cdot)$ ganz in
 $s$. In diesem offenen Tiefenbereich entstehen Singularitäten der

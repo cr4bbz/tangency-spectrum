@@ -2419,7 +2419,7 @@ $\mathcal A(\Omega)$-wertige Reihe. Sie ist somit eine ganze
 $\mathcal A(\Omega)$-wertige Funktion von $s$.
 
 \begin{proposition}[Exakte induzierte Resolventendarstellung]
-Für $\operatorname{Re}s>1$ und $|z|<1$ gilt
+Für $\operatorname{Re}s>1$ und $|z|\le1$ gilt
 \begin{equation}\label{eq:induced-depth-resolvent}
  \mathscr D(s,z)
  =
@@ -2461,7 +2461,7 @@ Rückkehrblöcke und den terminalen Lauf
  \sum_{r\ge0}\mathcal G(s,z)^r\eta(s,z;\,\cdot)(1).
 \]
 Im anfänglichen Bereich $\operatorname{Re}s>1$ ist die ursprüngliche
-Wortreihe absolut konvergent. Die Zerlegung darf daher nach Zahl und
+Wortreihe auch für $|z|=1$ absolut konvergent. Die Zerlegung darf daher nach Zahl und
 Längen der Rückkehrblöcke umgeordnet werden. Ihre Summe löst
 \[
  (I-\mathcal G(s,z))F=\eta(s,z;\,\cdot).
@@ -2604,21 +2604,159 @@ Da $|G_m'(x)|=(1+(m+1)x)^{-2}$, erhält man
 \]
 \end{proof}
 
+
+\subsection{Resolventennachweis des Doppelpols}
+
+Die induzierte Dynamik ist nach einer elementaren Koordinatenänderung
+der klassische Gauß-Transferoperator. Setze dazu
+\[
+ K(u)=\frac1{1+u},
+ \qquad
+ S_n(u)=\frac1{n+u}\quad(n\ge1),
+\]
+und definiere
+\[
+ (U_sf)(u)=(1+u)^{-2s}f(K(u)).
+\]
+Dann gilt die exakte Konjugationsformel
+\[
+ U_s\,\mathcal G(s,1)\,U_s^{-1}=\mathcal L_s^{\mathrm G},
+ \qquad
+ (\mathcal L_s^{\mathrm G}F)(u)
+ =
+ \sum_{n\ge1}(n+u)^{-2s}F(S_n(u)).
+\]
+Die Rückkehrdynamik ist also keine neue spektrale Klasse: Sie ist die
+Gauß-Dynamik in der Quotientenkoordinate $u=x^{-1}-1$.
+
+\begin{proposition}[Spektraler Gauß-Input]
+In einer Umgebung von $s=1$ besitzt
+$\mathcal L_s^{\mathrm G}$ auf einem geeigneten holomorphen
+Transferraum einen eindeutig bestimmten, holomorph von $s$ abhängigen
+Eigenwert $\lambda(s)$ mit
+\[
+ \lambda(1)=1.
+\]
+Dieser Eigenwert ist bei $s=1$ algebraisch einfach; der verbleibende
+Spektralteil ist von $1$ getrennt. Dieselbe Aussage gilt daher für
+$\mathcal G(s,1)$.
+\end{proposition}
+
+\begin{proof}
+Dies ist der klassische Spektralsatz für den Gauß--Kuzmin--Wirsing-
+Operator auf holomorphen Funktionsräumen. Die hier verwendete
+Operatorfamilie ist exakt die Familie mit Gewichten
+$(n+u)^{-2s}$. Eine passende holomorphe Formulierung findet sich etwa
+bei \href{https://maths.qmul.ac.uk/~omj/fm6.pdf}
+{Jenkinson--González--Urbański}; die Konjugationsformel überträgt sie
+auf unsere induzierte Familie.
+\end{proof}
+
+\begin{proposition}[Ableitung des führenden Eigenwerts]
+Für den führenden Eigenwert gilt
+\[
+ \lambda'(1)=-\frac{\pi^2}{6\log2}.
+\]
+\end{proposition}
+
+\begin{proof}
+Für $\mathcal L_1^{\mathrm G}$ sind rechter und linker Eigenvektor
+\[
+ \rho(u)=\frac1{1+u},
+ \qquad
+ \ell(F)=\int_0^1F(u)\,du,
+ \qquad
+ \ell(\rho)=\log2.
+\]
+Analytische Störungstheorie liefert daher
+\[
+ \lambda'(1)
+ =
+ \frac{\ell\bigl((\mathcal L_1^{\mathrm G})'\rho\bigr)}
+      {\ell(\rho)}.
+\]
+Nach der Variablentransformation $v=(n+u)^{-1}$ in jedem Zweig folgt
+\[
+ \ell\bigl((\mathcal L_1^{\mathrm G})'\rho\bigr)
+ =
+ 2\int_0^1\frac{\log v}{1+v}\,dv
+ =
+ -\frac{\pi^2}{6}.
+\]
+In der letzten Gleichheit wurde
+$(1+v)^{-1}=\sum_{j\ge0}(-v)^j$ integriert. Division durch $\log2$
+ergibt die Behauptung.
+\end{proof}
+
+\begin{theorem}[Resolvententheoretische Herleitung des Doppelpols]
+Die Referenz-Tiefenzeta besitzt bei $s=1$ die Entwicklung
+\[
+ \mathscr D(s,1)
+ =
+ \frac{12}{\pi^2}(s-1)^{-2}
+ +O\!\left((s-1)^{-1}\right).
+\]
+Insbesondere wird ihr Doppelpol bei $s=1$ allein aus terminalem
+parabolischem Pol und einfacher dynamischer Resonanz hergeleitet.
+\end{theorem}
+
+\begin{proof}
+Sei $h(x)=x^{-1}$ und $\nu(f)=\int_{1/2}^1f(x)\,dx$. Da die
+Rückkehrintervalle $G_m(Y)$ $Y$ bis auf Endpunkte zerlegen, ist
+$\nu$ linker Eigenvektor von $\mathcal G(1,1)$ und
+\[
+ \nu(h)=\log2.
+\]
+Die spektrale Projektion zum Eigenwert $1$ ist folglich
+\[
+ Pf=h\,\frac{\nu(f)}{\log2}.
+\]
+Aus der Einfachheit und der berechneten Ableitung folgt für die
+Resolvente
+\[
+ (I-\mathcal G(s,1))^{-1}
+ =
+ -\frac{P}{\lambda'(1)}\frac1{s-1}+O(1).
+\]
+Andererseits besitzt der terminale Anteil nach dem vorangehenden
+Korollar die Form
+\[
+ \eta(s,1;\,\cdot)
+ =
+ \frac{q}{s-1}+O(1),
+ \qquad q(x)=x^{-2}.
+\]
+Da
+\[
+ (Pq)(1)
+ =
+ \frac{\int_{1/2}^1x^{-2}\,dx}{\log2}
+ =
+ \frac1{\log2},
+\]
+liefert \eqref{eq:induced-depth-resolvent}
+\[
+ \mathscr D(s,1)
+ =
+ -\frac{2(Pq)(1)}{\lambda'(1)}(s-1)^{-2}
+ +O\!\left((s-1)^{-1}\right)
+ =
+ \frac{12}{\pi^2}(s-1)^{-2}
+ +O\!\left((s-1)^{-1}\right).
+\]
+\end{proof}
+
 \begin{remark}[Kollision am Rand]
 Im offenen Bereich $|z|<1$ sind terminale und dynamische
 Singularitäten getrennt. Auf $z=1$ treffen sie bei $s=1$ zusammen:
 Der terminale Anteil hat dort einen einfachen Hurwitz-Zeta-Pol, und
 zugleich besitzt die induzierte Dynamik die Eigenfunktion $x^{-1}$ zum
-Eigenwert $1$. Die exakte Identität
+Eigenwert $1$. Der vorangehende Satz zeigt, dass diese beiden einfachen
+Mechanismen mit nichtverschwindender Kopplung genau den Doppelpol
 \[
- \mathscr D(s,1)=2^s\frac{\zeta(s)^2}{\zeta(2s)}
- \sim\frac{12}{\pi^2}(s-1)^{-2}
+ \mathscr D(s,1)\sim\frac{12}{\pi^2}(s-1)^{-2}
 \]
-zeigt, dass die vollständige Referenzzeta dort einen Doppelpol hat.
-Aus der Resolventendarstellung allein folgt die Doppelpolordnung erst,
-wenn die Einfachheit dieser Resonanz und die Nichtverschwindung ihrer
-Kopplung an die terminale Beobachtung bewiesen sind. Genau das ist der
-nächste, nun präzise formulierte Resonanzschritt.
+erzeugen.
 \end{remark}
 
 \begin{remark}[Präzise Trennung der Mechanismen]

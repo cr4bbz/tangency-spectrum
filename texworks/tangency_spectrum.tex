@@ -2746,6 +2746,121 @@ liefert \eqref{eq:induced-depth-resolvent}
 \]
 \end{proof}
 
+
+\subsection{Zweiparametrige Normalform am kritischen Punkt}
+
+Nun wird die Tiefe wieder freigegeben. Für reelles $s$ nahe $1$ und
+$0<z\le1$ bezeichne $\lambda(s,z)$ den einfachen Eigenwert von
+$\mathcal G(s,z)$, der aus $\lambda(1,1)=1$ fortgesetzt wird. Die
+Einfachheit am Ausgangspunkt und die Operatornorm-Stetigkeit bis zum
+Rand $z=1$ sichern diese lokale Wahl.
+
+\begin{proposition}[Lokale Resonanzform]
+Für $s\to1$ und $z\uparrow1$ gilt mit $t=1-z$
+\begin{equation}\label{eq:two-parameter-normal-form}
+ 1-\lambda(s,z)
+ =
+ \frac{\pi^2}{6\log2}(s-1)
+ +
+ \frac{t\log(1/t)}{\log2}
+ +
+ o\!\left(|s-1|+t\log(1/t)\right).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Sei wieder $h(x)=x^{-1}$ und
+$\nu(f)=\int_{1/2}^1f(x)\,dx$. Für die einzelnen Rückkehrblöcke setze
+\[
+ a_m=\nu(R_m(1)h)
+ =
+ \int_{1/2}^1
+ \frac{dx}{(1+mx)(1+(m+1)x)}.
+\]
+Dann gilt
+\[
+ a_m=(m+1)^{-2}+O\!\left((m+1)^{-3}\right).
+\]
+Folglich ist
+\[
+ \begin{aligned}
+ \nu\bigl((\mathcal G(1,z)-\mathcal G(1,1))h\bigr)
+ &=
+ \sum_{m\ge0}(z^{m+1}-1)a_m\\
+ &=
+ \operatorname{Li}_2(z)-\zeta(2)+O(1-z)\\
+ &=
+ (1-z)\log(1-z)+O(1-z).
+ \end{aligned}
+\]
+Die Störungsformel für einen einfachen Eigenwert und
+$\nu(h)=\log2$ liefern damit
+\[
+ \lambda(1,z)-1
+ =
+ \frac{(1-z)\log(1-z)}{\log2}+O(1-z).
+\]
+Die $s$-Ableitung ist die bereits berechnete Zahl
+\[
+ \partial_s\lambda(1,1)=-\frac{\pi^2}{6\log2}.
+\]
+Für die gemischten Reste verwenden wir die Rang-eins-Abschätzung der
+Rückkehrblöcke. Sie reduziert deren Kontrolle auf
+\[
+ \sum_{n\ge1}(1-z^n)n^{-2}\log n
+ =
+ O\!\left(t\log^2(1/t)\right)
+ \qquad(t\downarrow0),
+\]
+während der operatorielle Rest wegen $O(n^{-3})$ nur $O(t)$ beiträgt.
+Zusammen mit dem quadratischen Rest der Störungstheorie ist dies
+$o(|s-1|+t\log(1/t))$. Dies ergibt
+\eqref{eq:two-parameter-normal-form}.
+\end{proof}
+
+\begin{proposition}[Kritische Erhaltung auf jeder Tiefe]
+Für jede Tiefe $k\ge0$ gilt exakt
+\[
+ \mathcal Z_k^{\mathrm{ref}}(1)=2.
+\]
+Daher ist
+\[
+ \mathscr D(1,z)=\frac2{1-z}
+ \qquad(|z|<1).
+\]
+\end{proposition}
+
+\begin{proof}
+Ein Knoten mit Paar $(u,v)$ trägt bei $s=1$ das Gewicht $2/(uv)$.
+Die beiden Kinder $(u,u+v)$ und $(u+v,v)$ besitzen zusammen das Gewicht
+\[
+ \frac2{u(u+v)}+\frac2{(u+v)v}
+ =
+ \frac2{uv}.
+\]
+Die Gesamtsumme bleibt daher unter jeder Verfeinerung erhalten und
+hat an der Wurzel den Wert $2$. Die zweite Aussage ist ihre
+erzeugende Funktion.
+\end{proof}
+
+\begin{remark}[Interpretation der Normalform]
+Die zweite Größe in \eqref{eq:two-parameter-normal-form},
+\[
+ (1-z)\log\frac1{1-z},
+\]
+ist die parabolische Tiefenskala. Sie konkurriert direkt mit der
+Spektralverschiebung $s-1$. Die terminale Beobachtung trägt zugleich
+den Faktor $\operatorname{Li}_s(z)$. Im Grenzfall $s=1$ heben sich
+dessen logarithmisches Wachstum und die parabolische Skala im Nenner
+genau so auf, dass die exakte kritische Antwort
+\[
+ \mathscr D(1,z)=\frac2{1-z}
+\]
+entsteht. Im Grenzfall $z=1$ liefert
+$\operatorname{Li}_s(1)=\zeta(s)$ zusammen mit der ersten Zeile von
+\eqref{eq:two-parameter-normal-form} den Doppelpol in $s$.
+\end{remark}
+
 \begin{remark}[Kollision am Rand]
 Im offenen Bereich $|z|<1$ sind terminale und dynamische
 Singularitäten getrennt. Auf $z=1$ treffen sie bei $s=1$ zusammen:

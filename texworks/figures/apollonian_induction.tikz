@@ -25,6 +25,6 @@
     \node at (2.12,0.55) {$\cdots$};
     \node[right] at (2.93,0.55) {$p^m a$};
     \node[below, align=center] at (1.78,-0.25)
-      {$|T_{\theta,m}'|\asymp m^{-2}$\quad (zu prüfen)};
+      {$|T_{\theta,m}'|\asymp m^{-2}$};
   \end{scope}
 \end{tikzpicture}

@@ -1,14 +1,21 @@
 \begin{tikzpicture}[x=1.45cm,y=1.25cm, line cap=round, line join=round]
   \draw[->] (0,0) -- (3.45,0) node[below right] {$\alpha$};
-  \draw[->] (0,0) -- (0,2.35) node[above left] {$t\,\widehat{\mathscr D}_{n}$};
+  \draw[->] (0,0) -- (0,2.35) node[above left] {$t\,\mathscr D$};
   \draw[blue!70!black, very thick, domain=0:3.15, samples=100]
     plot (\x,{2/(1+pi*pi*\x/6)});
+  \draw[red!70!black, thick, domain=0:3.15, samples=100]
+    plot (\x,{1/(1+pi*pi*\x/6)});
   \draw[densely dashed, gray] (0,2) -- (3.15,2);
+  \draw[densely dashed, gray] (0,1) -- (3.15,1);
   \fill[blue!70!black] (0,2) circle (1.4pt);
-  \node[above right, blue!70!black] at (0,2) {$2$};
+  \fill[red!70!black] (0,1) circle (1.4pt);
+  \node[above right, blue!70!black] at (0,2) {$\mathrm{ref}$};
+  \node[above right, red!70!black] at (0,1) {$\mathrm{Wurzel}$};
   \node[below] at (0,0) {$0$};
   \node[below] at (3,0) {$\displaystyle \frac{6}{\pi^2}$};
   \draw[densely dotted, gray] (3,0) -- (3,0.5);
-  \node[above right, align=left] at (1.45,1.15)
-    {$\displaystyle \Phi(\alpha)=\frac{2}{1+\frac{\pi^2}{6}\alpha}$};
+  \node[above right, blue!70!black] at (1.15,1.30)
+    {$\displaystyle \frac{2}{1+\frac{\pi^2}{6}\alpha}$};
+  \node[below right, red!70!black] at (1.25,0.68)
+    {$\displaystyle \frac{1}{1+\frac{\pi^2}{6}\alpha}$};
 \end{tikzpicture}

@@ -1,0 +1,30 @@
+\begin{tikzpicture}[x=1cm,y=1cm, line cap=round, line join=round]
+  \begin{scope}
+    \draw[thick] (0,0) -- (2.4,0) -- (1.2,2.1) -- cycle;
+    \draw[thick, fill=blue!12] (1.2,0.72) circle (0.45);
+    \node at (1.2,0.72) {$C$};
+    \node[below] at (1.2,-0.18) {Geburtstiefe $k$};
+    \draw[->, thick] (0.4,2.55) -- (0.95,1.92);
+    \draw[->, thick] (2.0,2.55) -- (1.45,1.92);
+    \draw[->, thick] (1.2,-0.62) -- (1.2,0.15);
+    \node[above] at (1.2,2.53) {drei neue Dreieckslücken};
+  \end{scope}
+
+  \draw[->, very thick] (3.15,1.02) -- (5.25,1.02);
+  \node[align=center] at (4.2,1.58) {Induktion\\an einer Kusp};
+
+  \begin{scope}[xshift=5.75cm]
+    \draw[rounded corners, thick] (0,0) rectangle (3.55,2.05);
+    \node[align=center] at (1.78,1.62)
+      {$T_{\theta,m}$,\quad $m\ge1$};
+    \draw[->, thick] (0.45,0.55) -- (1.10,0.55);
+    \draw[->, thick] (1.35,0.55) -- (2.00,0.55);
+    \draw[->, thick] (2.25,0.55) -- (2.90,0.55);
+    \node at (0.23,0.55) {$p$};
+    \node at (1.22,0.55) {$p^2$};
+    \node at (2.12,0.55) {$\cdots$};
+    \node[right] at (2.93,0.55) {$p^m a$};
+    \node[below, align=center] at (1.78,-0.25)
+      {$|T_{\theta,m}'|\asymp m^{-2}$\quad (zu prüfen)};
+  \end{scope}
+\end{tikzpicture}

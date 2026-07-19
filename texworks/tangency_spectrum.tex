@@ -2861,6 +2861,76 @@ $\operatorname{Li}_s(1)=\zeta(s)$ zusammen mit der ersten Zeile von
 \eqref{eq:two-parameter-normal-form} den Doppelpol in $s$.
 \end{remark}
 
+
+\begin{theorem}[Kritische Übergangsskala]
+Sei $\alpha\ge0$ fest, $t\downarrow0$ und
+\[
+ z_t=1-t,
+ \qquad
+ s_t=1+\alpha t\log\frac1t.
+\]
+Dann gilt
+\[
+ t\,\mathscr D(s_t,z_t)
+ \longrightarrow
+ \frac{2}{1+\frac{\pi^2}{6}\alpha}.
+\]
+\end{theorem}
+
+\begin{proof}
+Setze $L=\log(1/t)$. Aus \eqref{eq:two-parameter-normal-form} folgt
+\[
+ 1-\lambda(s_t,z_t)
+ =
+ \frac{tL}{\log2}
+ \left(1+\frac{\pi^2}{6}\alpha+o(1)\right).
+\]
+Ferner gilt die uniforme Polylogarithmus-Asymptotik
+\[
+ \operatorname{Li}_{s_t}(z_t)\sim L.
+\]
+Sie folgt etwa durch Vergleich der Reihe mit dem Integral von
+$e^{-tx}x^{-1-\alpha tL}$.
+
+Die Spektralzerlegung der Resolvente am einfachen Eigenwert liefert
+\[
+ (I-\mathcal G(s_t,z_t))^{-1}
+ =
+ \frac{P+o(1)}{1-\lambda(s_t,z_t)}+O(1).
+\]
+Nach der terminalen Regularisierung und
+$\nu(x^{-2})=1$ gilt daher
+\[
+ (P\eta(s_t,z_t;\,\cdot))(1)
+ =
+ \frac{L}{\log2}(1+o(1)).
+\]
+Eingesetzt in \eqref{eq:induced-depth-resolvent} ergibt dies
+\[
+ \mathscr D(s_t,z_t)
+ =
+ \frac{2}{t}
+ \frac{1+o(1)}{1+\frac{\pi^2}{6}\alpha},
+\]
+wie behauptet.
+\end{proof}
+
+\begin{remark}[Universelle lokale Profilfunktion]
+Mit der skalierten Koordinate
+\[
+ \alpha
+ =
+ \frac{s-1}{(1-z)\log(1/(1-z))}
+\]
+lautet das lokale Profil
+\[
+ \Phi(\alpha)=\frac{2}{1+\frac{\pi^2}{6}\alpha}.
+\]
+Bei $\alpha=0$ reproduziert es die exakte kritische Identität
+$\mathscr D(1,z)=2/(1-z)$. Die Steigung der Profilfunktion wird allein
+durch die Gauß-Entropiekonstante $\pi^2/(6\log2)$ festgelegt.
+\end{remark}
+
 \begin{remark}[Kollision am Rand]
 Im offenen Bereich $|z|<1$ sind terminale und dynamische
 Singularitäten getrennt. Auf $z=1$ treffen sie bei $s=1$ zusammen:

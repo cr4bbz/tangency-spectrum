@@ -1554,6 +1554,82 @@ auf eine konkrete Verteilungsfrage reduziert: Es muss kontrolliert werden,
 wie viele Lücken einer Tiefe mit dem parabolischen Maßstab $k^{-1}$
 vergleichbar bleiben.
 
+\subsubsection{Universelles normiertes Crossoverprofil}
+
+Ordne das Wurzelpaar einer unteren Lücke als $(A_n,A_nx_n)$ mit
+\[
+ x_n=\theta_n^{-1}\in
+ K:=\left[q^{-1},2^{-1/2}\right].
+\]
+Die natürliche dimensionslose lokale Tiefenzeta ist
+\[
+ \widehat{\mathscr D}_n(s,z)
+ =
+ \sum_{k\ge0}z^k
+ \sum_{|w|=k}
+ \left(\frac{\ell_{n,w}}{\ell_{n,\varnothing}}\right)^s.
+\]
+Ihre kritische Normierung ist durch die Tiefenerhaltung bereits
+festgelegt:
+\[
+ \widehat{\mathscr D}_n(1,z)=\frac1{1-z}.
+\]
+
+\begin{proposition}[Universelles Wurzellückenprofil]
+Sei $\alpha\ge0$ fest, $t\downarrow0$ und
+\[
+ z_t=1-t,
+ \qquad
+ s_t=1+\alpha t\log\frac1t.
+\]
+Dann gilt gleichmäßig in $n$
+\[
+ t\,\widehat{\mathscr D}_n(s_t,z_t)
+ \longrightarrow
+ \frac{1}{1+\frac{\pi^2}{6}\alpha}.
+\]
+Das kritische Crossoverprofil ist nach der Wurzelnormierung also
+unabhängig von der lokalen Form $\theta_n$.
+\end{proposition}
+
+\begin{proof}
+Für ein beliebiges Startpaar $(A,Ax)$ mit $x\in K$ liefert die
+Quotientendynamik die exakte Transferdarstellung
+\[
+ \widehat{\mathscr D}_{A,x}(s,z)
+ =
+ x^s\sum_{k\ge0}z^k
+ (\mathcal L_s^k\psi_s)(x),
+ \qquad
+ \psi_s(y)=y^{-s}.
+\]
+Bei $s=1$ ist $\psi_1(y)=y^{-1}$ ein fester Vektor von
+$\mathcal L_1$. Dies erklärt unmittelbar die Identität
+$\widehat{\mathscr D}_{A,x}(1,z)=(1-z)^{-1}$.
+
+Induziert man die Bahn von $x\in K$ auf $Y$, so bilden die
+Eingangs- und terminalen Operatoren eine in $x$ kompakte Familie. Die
+Rang-eins-Schwanzabschätzung und ihr um eine Potenz besserer Rest gelten
+dort gleichmäßig in $x$. Ihre Projektion auf den einfachen
+Gauß-Eigenraum ist proportional zu $x^{-1}$; der Faktor $x^s$ in der
+Normierung hebt ihn bei $s=1$ auf. Die gesamte Beweisführung der
+kritischen Übergangsskala gilt daher uniform in $x\in K$, nun mit
+Anfangswert $1$ statt $2$. Da jedes $x_n$ in $K$ liegt, folgt die
+Behauptung.
+\end{proof}
+
+\begin{figure}[htbp]
+ \centering
+ \input{figures/critical_crossover.tikz}
+ \caption{Universelles kritisches Crossoverprofil der nach ihrer
+ Wurzellänge normierten lokalen Tiefenzeta. Die skalierte Tiefe
+ $t=1-z$ und die Spektralverschiebung
+ $s-1=\alpha t\log(1/t)$ erzeugen das Profil
+ $\Phi(\alpha)=2/(1+\pi^2\alpha/6)$ im Referenzfall und die Hälfte
+ davon in jeder normierten Wurzellücke.}
+ \label{fig:critical-crossover}
+\end{figure}
+
 \subsubsection{Parabolische Randstrahlen im Referenzmodell}
 
 Für das Referenzintervall mit Parameterpaar $(1,1)$ sei

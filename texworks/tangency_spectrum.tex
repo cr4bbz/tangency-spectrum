@@ -1119,25 +1119,62 @@ Seine ursprüngliche Geburtslänge sei $\tau_{\theta,m}$.
  \input{figures/apollonian_induction.tikz}
  \caption{Apollonische Geburtsdynamik und ihr induzierter
  Kuspmechanismus. Die Dreiast-Verfeinerung erzeugt nach Induktion
- abzählbar viele kontrahierende Rückkehrzweige. Die im Bild notierte
- Schwanzordnung ist die konkrete zu überprüfende geometrische
- Abschätzung.}
+ abzählbar viele kontrahierende Rückkehrzweige; die parabolischen
+ Potenzen liefern deren quadratischen Schwanz.}
  \label{fig:apollonian-induction}
 \end{figure}
 
-\begin{question}[Apollonische Rückkehrhypothese]
-Lassen sich für $\theta\in[\sqrt2,q]$ gleichmäßig
+\begin{proposition}[Apollonischer Kusp-Schwanz]
+In einer Standardnormalisierung des Apollonischen Gaskets sei
 \[
- \tau_{\theta,m}\asymp m,
+ f(z)=\frac{(\sqrt3-1)z+1}{-z+\sqrt3+1},
  \qquad
- \|T_{\theta,m}'\|_\infty\asymp(m+1)^{-2}
+ R(z)=e^{2\pi i/3}z.
+\]
+Die induzierten Zweige können als zwei Familien
+\[
+ T_{2m+1}=f\circ R\circ f^m,
+ \qquad
+ T_{2m}=f\circ R^2\circ f^m
  \qquad(m\ge1)
 \]
-zeigen, zusammen mit einer einheitlichen Verzerrungsabschätzung für
-Kompositionen?
-\end{question}
+geschrieben werden. Auf jedem kompakten Rückkehrgebiet, das den
+parabolischen Fixpunkt $1$ nicht enthält, gilt
+\[
+ \|T_j'\|_\infty\asymp j^{-2},
+ \qquad
+ \tau_j\asymp j.
+\]
+Nach den uniformen Möbius-Normierungen der lokalen Wurzellücken gelten
+diese Abschätzungen gleichmäßig für
+$\theta\in[\sqrt2,q]$.
+\end{proposition}
 
-Unter dieser Hypothese besitzt der gewichtete induzierte Operator
+\begin{proof}
+Die Matrix von $f$ ist bis auf den Skalar $\sqrt3$ unipotent. Daher
+gilt exakt
+\[
+ f^m(z)
+ =
+ \frac{(\sqrt3-m)z+m}{-mz+\sqrt3+m},
+ \qquad
+ (f^m)'(z)
+ =
+ \frac3{\bigl(\sqrt3+m(1-z)\bigr)^2}.
+\]
+Auf einem kompakten Rückkehrgebiet ist $|1-z|$ von $0$ getrennt.
+Folglich ist $|(f^m)'(z)|\asymp m^{-2}$. Die beiden festen äußeren
+Möbius-Abbildungen besitzen auf den relevanten kompakten Bildern
+gleichmäßig beschränkte, von $0$ getrennte Ableitungen. Dies beweist
+die quadratische Zweigordnung. Die ursprünglichen Wörter enthalten
+einen parabolischen Lauf der Länge $m$ und nur endlich viele weitere
+Generatoren, also $\tau_j=m+O(1)$. Die in
+Proposition~8.2 bewiesenen Möbius-Normierungen bewegen die relevanten
+Kompakta nur in einer kompakten Familie und übertragen die
+Abschätzungen uniform auf den angegebenen Parameterbereich.
+\end{proof}
+
+Der gewichtete induzierte Operator besitzt damit die Form
 \[
  (\mathcal A_\theta(s,z)f)(x)
  =
@@ -1148,7 +1185,7 @@ Unter dieser Hypothese besitzt der gewichtete induzierte Operator
 Sein führender Eigenwert werde mit $\Lambda_\theta(s,z)$ bezeichnet.
 
 \begin{proposition}[Konditionale lineare Crossoverform]
-Angenommen, die Apollonische Rückkehrhypothese gilt und der führende
+Angenommen, der führende
 Eigenwert bei $(\delta,1)$ ist einfach. Dann existieren positive
 Konstanten
 \[
@@ -1178,7 +1215,7 @@ Eigenraum ist.
 \end{proposition}
 
 \begin{proof}
-Die Rückkehrhypothese liefert bei $s=\delta>1$
+Der Kusp-Schwanz liefert bei $s=\delta>1$
 \[
  \sum_{m\ge1}\tau_{\theta,m}
  \|T_{\theta,m}'\|_\infty^\delta

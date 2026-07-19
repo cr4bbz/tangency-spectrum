@@ -1089,6 +1089,118 @@ Damit folgt \eqref{eq:global-exact-count}. Die Mellin-Identität
 liefert die Fortsetzung und den angegebenen Residuenwert.
 \end{proof}
 
+\subsection{Apollonische Tiefenzeta: der nächste Operatorblock}
+
+Für eine normalisierte lokale Apollonische Packung $\mathcal A_\theta$
+wählen wir die erste freie Descartes-Geburt als Tiefe $0$. Jeder neu
+entstehende Kreis erzeugt drei neue Dreieckslücken. Mit
+$\operatorname{dep}(C)$ als Geburtsgeneration definieren wir die
+apollonische Tiefenzeta
+\[
+ \mathscr R_\theta(s,z)
+ =
+ \sum_{C\in\mathcal A_\theta}
+ z^{\operatorname{dep}(C)}\operatorname{rad}(C)^s.
+\]
+Bei $z=1$ ist dies die lokale Radiuszeta mit kritischem Exponenten
+$\delta$.
+
+Die endliche Dreiast-Kodierung ist an den drei Kuspen parabolisch und
+daher für eine direkte Spektralanalyse ungeeignet. Der richtige
+nächste Schritt ist wiederum Induktion: Ein cuspider Lauf der Länge $m$
+wird zu einem Zweig $T_{\theta,m}$ einer abzählbaren, gleichmäßig
+kontrahierenden Familie. Diese induzierte Sicht auf den Apollonischen
+Gasket liegt auch der rigorosen Dimensionsanalyse von
+\href{https://arxiv.org/abs/2406.04922}{Vytnova--Wormell} zugrunde.
+Seine ursprüngliche Geburtslänge sei $\tau_{\theta,m}$.
+
+\begin{figure}[htbp]
+ \centering
+ \input{figures/apollonian_induction.tikz}
+ \caption{Apollonische Geburtsdynamik und ihr induzierter
+ Kuspmechanismus. Die Dreiast-Verfeinerung erzeugt nach Induktion
+ abzählbar viele kontrahierende Rückkehrzweige. Die im Bild notierte
+ Schwanzordnung ist die konkrete zu überprüfende geometrische
+ Abschätzung.}
+ \label{fig:apollonian-induction}
+\end{figure}
+
+\begin{question}[Apollonische Rückkehrhypothese]
+Lassen sich für $\theta\in[\sqrt2,q]$ gleichmäßig
+\[
+ \tau_{\theta,m}\asymp m,
+ \qquad
+ \|T_{\theta,m}'\|_\infty\asymp(m+1)^{-2}
+ \qquad(m\ge1)
+\]
+zeigen, zusammen mit einer einheitlichen Verzerrungsabschätzung für
+Kompositionen?
+\end{question}
+
+Unter dieser Hypothese besitzt der gewichtete induzierte Operator
+\[
+ (\mathcal A_\theta(s,z)f)(x)
+ =
+ \sum_{m\ge1}
+ z^{\tau_{\theta,m}}
+ |T_{\theta,m}'(x)|^s f(T_{\theta,m}(x)).
+\]
+Sein führender Eigenwert werde mit $\Lambda_\theta(s,z)$ bezeichnet.
+
+\begin{proposition}[Konditionale lineare Crossoverform]
+Angenommen, die Apollonische Rückkehrhypothese gilt und der führende
+Eigenwert bei $(\delta,1)$ ist einfach. Dann existieren positive
+Konstanten
+\[
+ \chi_\theta=-\partial_s\Lambda_\theta(\delta,1),
+ \qquad
+ \mu_\theta=\partial_z\Lambda_\theta(\delta,1)
+\]
+und es gilt
+\[
+ 1-\Lambda_\theta(s,z)
+ =
+ \chi_\theta(s-\delta)
+ +\mu_\theta(1-z)
+ +o\!\left(|s-\delta|+|1-z|\right).
+\]
+Für eine passende terminale Beobachtung folgt daraus eine lineare
+kritische Skala
+\[
+ (1-z)\,
+ \mathscr R_\theta\bigl(\delta+\alpha(1-z),z\bigr)
+ \longrightarrow
+ \frac{A_\theta}{\mu_\theta+\chi_\theta\alpha},
+ \qquad \alpha\ge0,
+\]
+wobei $A_\theta>0$ die Projektion der Beobachtung auf den führenden
+Eigenraum ist.
+\end{proposition}
+
+\begin{proof}
+Die Rückkehrhypothese liefert bei $s=\delta>1$
+\[
+ \sum_{m\ge1}\tau_{\theta,m}
+ \|T_{\theta,m}'\|_\infty^\delta
+ \ll
+ \sum_{m\ge1}m^{1-2\delta}<\infty.
+\]
+Der Operator ist daher am Punkt $z=1$ einmal nach $z$
+differenzierbar. Analytische Störungstheorie am einfachen Eigenwert
+liefert die lineare Entwicklung. Die Resolventendarstellung mit
+terminaler Beobachtung ergibt anschließend den skalierten Grenzwert.
+\end{proof}
+
+\begin{remark}[Warum dies nicht die Stern--Brocot-Skala ist]
+Bei den Randlücken liegt der kritische Exponent bei $s=1$; der
+entsprechende erste Rückkehrmoment ist grenzwertig divergent und
+erzeugt $(1-z)\log(1/(1-z))$. Für die Apollonische Radiuszeta gilt
+$\delta>1$, so dass derselbe parabolische Schwanz einen endlichen
+ersten Moment hätte. Die lineare Form wäre daher ein echter
+Klassenunterschied zwischen eindimensionaler Tangenzlänge und
+zweidimensionaler Kreisradiusdynamik.
+\end{remark}
+
 \section{Das projizierte Randmaß}
 
 Sei $\beta$ das faire Bernoulli-Maß auf $\{L,R\}^{\mathbb N}$. Die
